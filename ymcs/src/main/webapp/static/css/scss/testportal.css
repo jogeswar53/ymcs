@@ -1,0 +1,207 @@
+.thumb-img {
+  padding-bottom: 10px; }
+
+.permission-menu-body {
+  overflow-y: auto;
+  height: 300px; }
+
+.dropdown-menu {
+  min-width: 260px; }
+
+.table-condensed {
+  width: 100%; }
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1; }
+
+.inputfile + label {
+  max-width: 100%;
+  font-size: 1.27rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.625rem 1.25rem; }
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px; }
+
+.inputfile-6 + label {
+  color: #3c8dbc; }
+
+.inputfile-6 + label {
+  border: 1px solid #3c8dbc;
+  background-color: #ffffff;
+  padding: 0;
+  width: 100%; }
+
+.inputfile-6:focus + label,
+.inputfile-6.has-focus + label,
+.inputfile-6 + label:hover {
+  border-color: #3c8dbc; }
+
+.inputfile-6 + label span, .inputfile-6 + label strong {
+  padding: 0.625rem 1.25rem; }
+
+.inputfile-6 + label span {
+  width: 58%;
+  min-height: 2em;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: top; }
+
+.inputfile-6 + label strong {
+  height: 100%;
+  width: 42%;
+  color: #ffffff;
+  background-color: #3c8dbc;
+  display: inline-block; }
+
+.inputfile-6:focus + label strong,
+.inputfile-6.has-focus + label strong,
+.inputfile-6 + label:hover strong {
+  background-color: #3c8dbc; }
+
+@media screen and (max-width: 50em) {
+  .inputfile-6 + label strong {
+    display: block; } }
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.pick-date {
+  cursor: pointer; }
+
+.add-new-form-element {
+  margin-left: 40px;
+  cursor: pointer;
+  font-size: 18px; }
+
+.delete-new-form-element {
+  margin-left: 12px;
+  cursor: pointer;
+  font-size: 18px; }
+
+.form-style-3 fieldset {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  margin: 0 0 10px 0;
+  border: 1px solid #c7c7c7;
+  padding: 0 10px 10px 30px;
+  background: #f3f3f361;
+  box-shadow: inset 0 0 15px #dcd9d9;
+  -moz-box-shadow: inset 0 0 15px #d2d2d2;
+  -webkit-box-shadow: inset 0 0 15px #d2d2d2; }
+
+.form-style-3 fieldset legend {
+  color: #3c8dbc;
+  border-top: 1px solid #d2d2d2;
+  border-left: 1px solid #d2d2d2;
+  border-right: 1px solid #d2d2d2;
+  border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  background: #fff;
+  padding: 0 8px 0 8px;
+  box-shadow: 0 -1px 2px #f1f1f1;
+  -moz-box-shadow: -0 -1px 2px #f1f1f1;
+  -webkit-box-shadow: 0 -1px 2px #f1f1f1;
+  font-weight: normal;
+  font-size: 21px;
+  width: initial;
+  border-bottom: 0 !important;
+  margin: 3px; }
+
+.mandatory_star {
+  color: red;
+  font-size: 18px;
+  padding-left: 3px; }
+
+.select2-container {
+  display: grid !important;
+  width: 70% !important;
+  border-radius: 3px; }
+
+.login-page {
+  height: auto; }
+
+.error {
+  color: red; }
+
+.form-control {
+  color: black; }
+
+.error-message {
+  color: red;
+  font-weight: bold; }
+
+.success-message {
+  color: green;
+  font-weight: bold; }
+
+.menu_list_div {
+  margin-top: 1%; }
+
+.pt-20px {
+  padding-top: 20px; }
+
+.portal-table tbody tr td:last-child span {
+  border-right: solid 1px #d7d7d7;
+  margin: 2px;
+  cursor: pointer;
+  color: #337ab7; }
+  .portal-table tbody tr td:last-child span:last-child {
+    border-right: 0; }
+
+.icons {
+  color: #aaa;
+  margin-left: 4%;
+  cursor: pointer; }
+
+.modal-header {
+  background: #28a9e0 none repeat scroll 0 0;
+  color: #FFFFFF;
+  padding: 10px; }
+
+.bg_g_button {
+  font-size: 14px;
+  background-color: #005aab;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 10px; }
+
+.align-center {
+  text-align: center; }
+
+.red {
+  color: red; }
+
+.green {
+  color: green; }
+
+.org-table {
+  overflow: auto; }
+
+@media only screen and (max-width: 991px) {
+  .responsive-table {
+    overflow: auto; }
+
+  .dropdown-menu {
+    min-width: 200px; } }
+
+/*# sourceMappingURL=testportal.css.map */

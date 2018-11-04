@@ -1,0 +1,11 @@
+document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/jquery.js'></script>");
+//document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugin/jquery-ui.js'></script>");
+document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/bootstrap.js'></script>");
+document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/jquery.slimscroll.js'></script>");
+document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/fastclick.js'></script>");
+document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/jquery.dataTables.js'></script>");
+document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/dataTables.bootstrap.js'></script>");
+document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/jquery.validate.min.js'></script>");
+document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/additional-methods.min.js'></script>");
+document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/select2.full.js'></script>");
+document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/bootstrap-datepicker.js'></script>");

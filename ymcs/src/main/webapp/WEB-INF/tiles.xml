@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="base.definition" template="/WEB-INF/jsp/admin/common/rrAdminTemplate.jsp">
+		<put-attribute name="title" value="Affiliate" />
+		<put-attribute name="header" value="/WEB-INF/jsp/admin/common/rrAdminHeader.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/admin/common/rrAdminFooter.jsp" />
+	</definition>
+
+
+
+	<definition name="dashboard" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/dashboard/dashboard.jsp" />
+	</definition>
+
+	<definition name="mgmtdashboard" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/dashboard/dashboard.jsp" />
+	</definition>
+
+	<definition name="tsdashboard" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/dashboard/dashboard.jsp" />
+	</definition>
+
+	<definition name="ntsdashboard" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/dashboard/dashboard.jsp" />
+	</definition>
+
+	<definition name="stddashboard" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/dashboard/dashboard.jsp" />
+	</definition>
+
+	<definition name="gurddashboard" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/dashboard/dashboard.jsp" />
+	</definition>
+
+
+
+	<definition name="createMenus" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/menu/createMenu.jsp" />
+	</definition>
+
+
+
+	<definition name="createCountry" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/country/createCountry.jsp" />
+	</definition>
+
+
+
+	<definition name="createClass" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/class/createClass.jsp" />
+	</definition>
+
+	<definition name="updateClass" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/class/updateClass.jsp" />
+	</definition>
+
+
+
+	<definition name="createState" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/state/createState.jsp" />
+	</definition>
+
+	<definition name="updateState" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/state/updateState.jsp" />
+	</definition>
+
+
+
+	<definition name="createOrganization" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/organization/createOrganization.jsp" />
+	</definition>
+
+	<definition name="updateOrganization" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/organization/updateOrganization.jsp" />
+	</definition>
+
+
+
+	<definition name="createSection" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/section/createSection.jsp" />
+	</definition>
+
+	<definition name="updateSection" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/section/updateSection.jsp" />
+	</definition>
+
+
+
+	<definition name="createSyllabus" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/syllabus/createSyllabus.jsp" />
+	</definition>
+
+	<definition name="updateSyllabus" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/syllabus/updateSyllabus.jsp" />
+	</definition>
+
+
+
+	<definition name="createUserRole" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/userRole/createUserRole.jsp" />
+	</definition>
+
+	<definition name="updateUserRole" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/userRole/updateUserRole.jsp" />
+	</definition>
+
+
+
+	<definition name="createPermission" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/permission/createPermission.jsp" />
+	</definition>
+
+	<definition name="updatePermission" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/permission/updatePermission.jsp" />
+	</definition>
+
+
+
+	<definition name="createHostel" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/hostel/createHostel.jsp" />
+	</definition>
+
+	<definition name="updateHostel" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/hostel/updateHostel.jsp" />
+	</definition>
+
+	<definition name="viewHostelList" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/hostel/viewHostelList.jsp" />
+	</definition>
+
+<!--  newly added start -->
+	<definition name="createOrder" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/order/createOrder.jsp" />
+	</definition>
+
+	<definition name="updateOrder" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/order/updateOrder.jsp" />
+	</definition>
+
+	<definition name="viewOrderList" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/order/viewOrderList.jsp" />
+	</definition>
+
+	<definition name="updateInvoice" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/invoice/updateInvoice.jsp" />
+	</definition>
+
+<!--  newly added end -->
+
+
+	<definition name="createUser" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/createUser/createUser.jsp" />
+	</definition>
+
+
+
+	<definition name="createNotification" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/notification/createNotification.jsp" />
+	</definition>
+
+	<definition name="updateNotification" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/notification/updateNotification.jsp" />
+	</definition>
+
+
+
+	<definition name="createTimeTable" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/timeTable/createTimeTable.jsp" />
+	</definition>
+
+	<definition name="updateTimeTable" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/timeTable/updateTimeTable.jsp" />
+	</definition>
+
+	<definition name="viewTimeTable" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/timeTable/viewTimeTable.jsp" />
+	</definition>
+
+
+
+	<definition name="uploadHolidayFile" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/holiday/uploadHolidayFile.jsp" />
+	</definition>
+
+	<definition name="updateUploadHolidayFile" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/holiday/updateUploadHolidayFile.jsp" />
+	</definition>
+
+	<definition name="viewHolidayList" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/holiday/viewHolidays.jsp" />
+	</definition>
+
+
+
+	<definition name="createHomeWork" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/homeWork/createHomeWork.jsp" />
+	</definition>
+
+	<definition name="updateHomeWork" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/homeWork/updateHomeWork.jsp" />
+	</definition>
+
+	<definition name="viewHomeWorkList" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/homeWork/viewHomeWorks.jsp" />
+	</definition>
+
+
+
+	<definition name="createExamTimeTable" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/examTimeTable/createExamTimeTable.jsp" />
+	</definition>
+
+	<definition name="updateExamTimeTable" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/examTimeTable/updateExamTimeTable.jsp" />
+	</definition>
+
+	<definition name="viewExamTimeTables" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/examTimeTable/viewExamTimeTable.jsp" />
+	</definition>
+
+
+
+	<definition name="createFeesOrFine" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/feesOrFine/createFeesOrFine.jsp" />
+	</definition>
+
+	<definition name="updateFeesOrFine" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/feesOrFine/updateFeesOrFine.jsp" />
+	</definition>
+
+	<definition name="viewFeesFines" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/feesOrFine/viewFeesOrFine.jsp" />
+	</definition>
+
+
+
+	<definition name="studentEnrollment" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/studentEnrollment/studentEnrollment.jsp" />
+	</definition>
+
+	<definition name="updateStudentEnrollment" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/studentEnrollment/updateStudentEnrollment.jsp" />
+	</definition>
+
+
+
+	<definition name="emailManagement" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/content/emailManagement.jsp" />
+	</definition>
+
+	<definition name="addEmail" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/content/addEmail.jsp" />
+	</definition>
+
+	<definition name="updateEmail" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/content/updateEmail.jsp" />
+	</definition>
+
+	<definition name="createNotification" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/notification/createNotification.jsp" />
+	</definition>
+
+	<definition name="updateNotification" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/notification/updateNotification.jsp" />
+	</definition>
+
+	<definition name="createLeave" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/leaveManagement/createLeave.jsp" />
+	</definition>
+
+
+</tiles-definitions>

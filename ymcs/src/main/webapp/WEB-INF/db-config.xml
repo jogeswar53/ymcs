@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+	<bean id="dbPropertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/database-${ym.environment}.properties</value>
+				<value>/WEB-INF/ApplicationConfig-${ym.environment}.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- for reading properties file in jsp -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>/WEB-INF/ApplicationConfig-${ym.environment}</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Database Properties -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"
+		p:driverClass="${jdbc.driver.className}"
+		p:jdbcUrl="${jdbc.url}"
+		p:user="${jdbc.username}" 
+		p:password="${jdbc.password}"
+		p:acquireIncrement="5" 
+		p:acquireRetryAttempts="10"
+		p:acquireRetryDelay="5000"
+		p:numHelperThreads="5"
+		p:maxIdleTime="3600"
+		p:maxIdleTimeExcessConnections="900" 
+		p:idleConnectionTestPeriod="1800"
+		p:maxPoolSize="99" 
+		p:maxStatements="50" 
+		p:minPoolSize="10" />
+
+	<!-- Hibernate SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${jdbc.hibernate.dialect}</prop>
+				<!-- <prop key="hibernate.show_sql">false</prop> -->
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</prop>
+				<prop key="hibernate.jdbc.batch_size">20</prop>
+			</props>
+		</property>
+
+		<property name="packagesToScan" value="com" />
+	</bean>
+
+	<!-- Transaction management -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>

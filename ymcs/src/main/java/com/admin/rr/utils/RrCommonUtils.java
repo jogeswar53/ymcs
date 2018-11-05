@@ -10,14 +10,12 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.admin.rr.beans.RrMenuAttributeJSONBean;
 import com.admin.rr.beans.RrMenuJSONBean;
 import com.admin.rr.constants.RrConstants;
 import com.admin.rr.entity.RrMenus;
-import com.admin.rr.service.RrCommonService;
 
 /**
  * @author jogeswarsahu
@@ -27,9 +25,6 @@ import com.admin.rr.service.RrCommonService;
 public class RrCommonUtils {
 
 	private static final Logger logger = LogManager.getLogger(RrCommonUtils.class.getName());
-
-	@Autowired
-	RrCommonService testCommonService;
 
 	protected static Map<Boolean, String> activeStatusValueMap = null;
 	protected static Map<String, String> activeStatusClassMap = null;
@@ -49,7 +44,8 @@ public class RrCommonUtils {
 
 	public static String nullSafe(Object givenString, Object defaultString) {
 		return (null != givenString && !"null".equals(givenString) && givenString.toString().trim().length() > 0)
-				? givenString.toString().trim().intern() : (String) defaultString;
+				? givenString.toString().trim().intern()
+				: (String) defaultString;
 	}
 
 	public static boolean getBooleanStatus(byte status) {
@@ -174,7 +170,8 @@ public class RrCommonUtils {
 		try {
 			DateFormat df = new SimpleDateFormat(
 					((format == null) || (RrConstants.STRING_EMPTY.intern().equals(format)))
-							? RrConstants.DEFAULT_DATE_FORMAT.intern() : format);
+							? RrConstants.DEFAULT_DATE_FORMAT.intern()
+							: format);
 
 			if (date != null) {
 				dateStr = df.format(date);
@@ -194,7 +191,8 @@ public class RrCommonUtils {
 		try {
 			DateFormat df = new SimpleDateFormat(
 					((format == null) || (RrConstants.STRING_EMPTY.intern().equals(format)))
-							? RrConstants.DEFAULT_DATE_FORMAT.intern() : format);
+							? RrConstants.DEFAULT_DATE_FORMAT.intern()
+							: format);
 
 			if (date != null && !date.trim().isEmpty()) {
 				dateStr = df.parse(date);

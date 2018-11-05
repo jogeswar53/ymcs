@@ -33,7 +33,7 @@ public class RrCountryConfDaoImpl implements RrCountryConfDao {
 
 		try {
 			countryList = sessionFactory.getCurrentSession()
-					.createQuery("select cm from RrCountryMaster cm where cm.deleteStatus=0").list();
+					.createQuery("select cm from RrCountryMaster cm where cm.status in ('Online', 'Offline')").list();
 		} catch (Exception e) {
 			logger.error("@@@ Exception in RrCountryConfDaoImpl at getAllCountryList(): ", e);
 		}

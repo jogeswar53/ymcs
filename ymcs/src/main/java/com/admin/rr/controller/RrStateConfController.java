@@ -61,7 +61,7 @@ public class RrStateConfController {
 			logger.error("@@@ Exception in RrStateConfController at createState(POST): ", e);
 		}
 
-		return "redirect:/admin/createState?pid=2&mid=5";
+		return "redirect:/admin/createState?pid=0&mid=4";
 	}
 
 	@RequestMapping(value = "/updateState", method = RequestMethod.GET)
@@ -94,7 +94,7 @@ public class RrStateConfController {
 			logger.error("@@@ Exception in RrStateConfController at updateState(POST): ", e);
 		}
 
-		return "redirect:/admin/createState?pid=2&mid=5";
+		return "redirect:/admin/createState?pid=0&mid=4";
 	}
 
 	@RequestMapping(value = "/deleteState", method = RequestMethod.GET)

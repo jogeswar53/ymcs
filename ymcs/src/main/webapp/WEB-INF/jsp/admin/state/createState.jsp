@@ -120,7 +120,7 @@
 															<td>${ state.countryName }</td>
 															<td>${ state.stateCode }</td>
 															<td>${ state.stateName }</td>
-															<td class="${ state.activeStatusClass }">${ state.activeStatusValue }</td>
+															<td class="${ state.statusClass }">${ state.status }</td>
 															<td>
 																<span class="viewState" data-target="#viewStateModel">
 																	<i class="fa fa-eye"></i>
@@ -175,7 +175,7 @@
 														<c:forEach items="${activeStatus}" var="status">
 															<li>
 																<label>
-																	<form:radiobutton path="activeStatus" class="css-checkbox" id="${status.key}" value="${status.key}" />
+																	<form:radiobutton path="status" class="css-checkbox" id="${status.key}" value="${status.key}" />
 																	<label for="${status.key}" class="css-label radGroup2">${status.value}</label>
 																</label>
 															</li>

@@ -33,7 +33,7 @@ public class RrStateConfDaoImpl implements RrStateConfDao {
 
 		try {
 			stateMasterList = sessionFactory.getCurrentSession()
-					.createQuery("select sm from RrStateMaster sm where sm.deleteStatus=0").list();
+					.createQuery("select sm from RrStateMaster sm where sm.status in ('Online', 'Offline')").list();
 		} catch (Exception e) {
 			logger.error("@@@ Exception in RrStateConfDaoImpl at getAllStateList(): ", e);
 		}

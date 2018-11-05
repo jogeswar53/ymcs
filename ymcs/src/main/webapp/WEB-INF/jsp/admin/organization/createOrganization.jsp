@@ -59,7 +59,7 @@
 															data-countryname="${organization.countryName}"
 															data-currencycode="${organization.stateName}"
 															data-currencyname="${organization.organizationCode}"
-															data-activestatus="${organization.activeStatus}"
+															data-activestatus="${organization.status}"
 															data-isdcode="${organization.organizationName}"
 															data-isdcode="${organization.organizationAddr1}"
 															data-isdcode="${organization.organizationAddr2}"
@@ -76,7 +76,7 @@
 															<td>${organization.organizationAddr3}</td>
 															<td>${organization.district}</td>
 															<td>${organization.pincode}</td>
-															<td class="${ organization.activeStatusClass }">${organization.activeStatusValue}</td>
+															<td class="${ organization.statusClass }">${organization.status}</td>
 															<td>
 																<span class="viewOrganization" data-target="#viewOrganizationModel">
 																	<i class="fa fa-eye"></i>
@@ -176,7 +176,7 @@
 														<c:forEach items="${activeStatus}" var="status">
 															<li>
 																<label>
-																	<form:radiobutton path="activeStatus" class="css-checkbox" id="${status.key}" value="${status.key}" />
+																	<form:radiobutton path="status" class="css-checkbox" id="${status.key}" value="${status.key}" />
 																	<label for="${status.key}" class="css-label radGroup2">${status.value}</label>
 																</label>
 															</li>

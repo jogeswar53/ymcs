@@ -47,7 +47,8 @@ public class RrOrganizationConfDaoImpl implements RrOrganizationConfDao {
 
 		try {
 			organizationMasterList = sessionFactory.getCurrentSession()
-					.createQuery("select om from RrOrganizationMaster om where om.deleteStatus=0").list();
+					.createQuery("select om from RrOrganizationMaster om where om.status in ('Online', 'Offline')")
+					.list();
 		} catch (Exception e) {
 			logger.error("@@@ Exception in RrOrganizationConfDaoImpl at getAllOrganizations(): ", e);
 		}

@@ -105,7 +105,7 @@
 											<c:forEach items="${activeStatus}" var="status">
 												<li>
 													<label>
-														<form:radiobutton path="editActiveStatus" class="css-checkbox" id="${status.key}" value="${status.key}" />
+														<form:radiobutton path="status" class="css-checkbox" id="${status.key}" value="${status.key}" />
 														<label for="${status.key}" class="css-label radGroup2">${status.value}</label>
 													</label>
 												</li>
@@ -182,7 +182,7 @@
 															data-countryname="${country.countryName}"
 															data-currencycode="${country.currencyCode}"
 															data-currencyname="${country.currencyName}"
-															data-activestatus="${country.activeStatus}"
+															data-activestatus="${country.status}"
 															data-isdcode="${country.isdCode}">
 															<td>${ i.count }</td>
 															<td>${ country.countryCode }</td>
@@ -190,7 +190,7 @@
 															<td>${ country.isdCode }</td>
 															<td>${ country.currencyCode }</td>
 															<td>${ country.currencyName }</td>
-															<td class="${ country.activeStatusClass }">${ country.activeStatusValue }</td>
+															<td class="${ country.statusClass }">${ country.status }</td>
 															<td>
 																<span class="viewCountry" data-target="#viewCountryModel">
 																	<i class="fa fa-eye"></i>
@@ -256,7 +256,7 @@
 														<c:forEach items="${activeStatus}" var="status">
 															<li>
 																<label>
-																	<form:radiobutton path="activeStatus" class="css-checkbox" id="${status.key}" value="${status.key}" />
+																	<form:radiobutton path="status" class="css-checkbox" id="${status.key}" value="${status.key}" />
 																	<label for="${status.key}" class="css-label radGroup2">${status.value}</label>
 																</label>
 															</li>
@@ -267,7 +267,7 @@
 										</div>
 										<div class="row ">
 											<div class="col-md-8 text-center pull-right">
-												<a class="btn navbar-btn btn-default" href="${contextPath}/admin/createCountry?pid=2&mid=4">Cancel</a> &nbsp;&nbsp;
+												<a class="btn navbar-btn btn-default" href="${contextPath}/admin/createCountry?pid=0&mid=3">Cancel</a> &nbsp;&nbsp;
 												<a class="btn navbar-btn btn-primary" onclick="$(this).closest('form').submit();">Save</a>
 											</div>
 										</div>
@@ -283,7 +283,7 @@
 </div>
 
 <script>
-changeURL('admin/createCountry?pid=2&mid=4');
+changeURL('admin/createCountry?pid=0&mid=3');
 rradminportal.common();
 rradminportal.country();
 </script>

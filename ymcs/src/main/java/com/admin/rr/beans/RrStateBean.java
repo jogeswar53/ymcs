@@ -1,5 +1,7 @@
 package com.admin.rr.beans;
 
+import com.admin.rr.constants.RrConstants;
+
 /**
  * @author jogeswarsahu
  *
@@ -11,7 +13,7 @@ public class RrStateBean {
 	private String stateCode;
 	private String stateName;
 
-	private String status;
+	private String status = RrConstants.ONLINE;
 	private String statusClass;
 	private Long stateId = 0L;
 

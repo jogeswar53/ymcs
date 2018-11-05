@@ -1,5 +1,8 @@
 package com.admin.rr.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.LogManager;
@@ -39,6 +42,10 @@ public class RrMenuConfController {
 	@RequestMapping(value = "/createMenu", method = RequestMethod.GET)
 	public String createMenus(HttpServletRequest request, ModelMap model) {
 
+		Map<Byte, String> activeStatusValueMap = new HashMap<>();
+		activeStatusValueMap.put((byte) 0, "In Active");
+		activeStatusValueMap.put((byte) 1, "Active");
+
 		try {
 			String deleteMsg = RrCommonUtils.nullSafe(request.getParameter("deleteMsg"), RrConstants.STRING_EMPTY);
 			if (RrConstants.SUCCESS.equals(deleteMsg)) {
@@ -47,7 +54,7 @@ public class RrMenuConfController {
 				model.addAttribute(RrConstants.ERROR_MESSAGE, RrConstants.ERROR_MESSAGE_VALUE);
 			}
 			model.addAttribute("MenuList", new Gson().toJson(menuConfService.getMenuJson()));
-			model.addAttribute("activeStatus", RrCommonUtils.getStatus());
+			model.addAttribute("activeStatus", activeStatusValueMap);
 			model.addAttribute("addMenuForm", new RrMenuBean());
 			model.addAttribute("addSubMenuForm", new RrMenuBean());
 		} catch (Exception e) {

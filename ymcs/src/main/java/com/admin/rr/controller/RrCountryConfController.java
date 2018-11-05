@@ -77,7 +77,7 @@ public class RrCountryConfController {
 			logger.error("@@@ Exception in RrCountryConfController at createCountry(-, -): ", e);
 		}
 
-		return "redirect:/admin/createCountry?pid=2&mid=4";
+		return "redirect:/admin/createCountry?pid=0&mid=3";
 	}
 
 	@RequestMapping(value = "/deleteCountry", method = RequestMethod.GET)

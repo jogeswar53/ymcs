@@ -63,7 +63,7 @@
 														<c:forEach items="${activeStatus}" var="status">
 															<li>
 																<label>
-																	<form:radiobutton path="activeStatus" class="css-checkbox" id="${status.key}" value="${status.key}" />
+																	<form:radiobutton path="status" class="css-checkbox" id="${status.key}" value="${status.key}" />
 																	<label for="${status.key}" class="css-label radGroup2">${status.value}</label>
 																</label>
 															</li>

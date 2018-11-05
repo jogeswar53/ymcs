@@ -145,7 +145,10 @@
 											<div class="col-md-4">
 												<div class="form-group">
 													<label>Brand</label><span class="mandatory_star">*</span>
-													<form:input type="text" id="brand" path="brand" class="form-control" />
+														<form:select path="brand" class="form-control select2">
+															<form:option value="">Select Brand</form:option>
+															<form:options items="${brandMap}" />
+														</form:select>
 												</div>
 											</div>
 										</div>

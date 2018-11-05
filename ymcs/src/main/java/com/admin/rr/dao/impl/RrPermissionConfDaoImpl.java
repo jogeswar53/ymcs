@@ -33,7 +33,9 @@ public class RrPermissionConfDaoImpl implements RrPermissionConfDao {
 
 		try {
 			permissionMasterList = sessionFactory.getCurrentSession()
-					.createQuery("select pm from RrPermissionMaster pm where pm.deleteStatus=0 order by pm.rrUserRoleMaster.rrUserRoleMasterId").list();
+					.createQuery(
+							"select pm from RrPermissionMaster pm where pm.status in ('Online', 'Offline') order by pm.rrUserRoleMaster.rrUserRoleMasterId")
+					.list();
 		} catch (Exception e) {
 			logger.error("@@@ Exception in RrPermissionConfDaoImpl at getAllPermissionList(): ", e);
 		}
@@ -61,8 +63,8 @@ public class RrPermissionConfDaoImpl implements RrPermissionConfDao {
 		RrPermissionMaster permissionMaster = null;
 
 		try {
-			permissionMaster = (RrPermissionMaster) sessionFactory.getCurrentSession()
-					.get(RrPermissionMaster.class, permissionId);
+			permissionMaster = (RrPermissionMaster) sessionFactory.getCurrentSession().get(RrPermissionMaster.class,
+					permissionId);
 		} catch (Exception e) {
 			logger.error("@@@ Exception in RrPermissionConfDaoImpl at getPermissionById(): ", e);
 		}

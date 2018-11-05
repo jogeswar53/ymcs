@@ -46,6 +46,11 @@ public class RrUserProfileController {
 		genderMap.put(RrConstants.FEMALE, RrConstants.FEMALE);
 		genderMap.put(RrConstants.OTHER, RrConstants.OTHER);
 
+		Map<String, String> titleMap = new HashMap<>();
+		titleMap.put(RrConstants.MR, RrConstants.MR);
+		titleMap.put(RrConstants.MRS, RrConstants.MRS);
+		titleMap.put(RrConstants.MS, RrConstants.MS);
+
 		try {
 			String deleteMsg = RrCommonUtils.nullSafe(request.getParameter("deleteMsg"), RrConstants.STRING_EMPTY);
 
@@ -60,6 +65,7 @@ public class RrUserProfileController {
 			model.addAttribute("activeStatus", RrCommonUtils.getStatus());
 
 			model.addAttribute("genderMap", genderMap);
+			model.addAttribute("titleMap", titleMap);
 
 			model.addAttribute("userRoleMap", commonService.getUserRoleMap());
 			model.addAttribute("organizationMap", commonService.getOrganizationMap());

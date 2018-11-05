@@ -1,7 +1,5 @@
 package com.admin.rr.beans;
 
-import java.util.Date;
-
 /**
  * 
  * @author jogeswar
@@ -10,60 +8,30 @@ import java.util.Date;
 
 public class OrderBean {
 
-	private Long rrOrderId;
-	private Integer rrUserProfileId;
-	private String orderId;
+	private Long orderId;
+	private Long userProfileId;
+	private String orderNo;
 	private String firstName;
 	private String middleName;
 	private String lastName;
 	private String mobileNo;
 	private String emailId;
 	private String address;
-	private String brand;
+	private Long brandId;
 	private String model;
-	private Date dueTime;
+	private String dueTime;
 	private String accessories;
 	private String paidAmount;
 	private String issue;
 	private String issueDescription;
 	private String createdTime;
-	private Integer createdBy;
+	private Long createdBy;
 	private String status;
-
-	/**
-	 * @return the rrOrderId
-	 */
-	public Long getRrOrderId() {
-		return rrOrderId;
-	}
-
-	/**
-	 * @param rrOrderId
-	 *            the rrOrderId to set
-	 */
-	public void setRrOrderId(Long rrOrderId) {
-		this.rrOrderId = rrOrderId;
-	}
-
-	/**
-	 * @return the rrUserProfileId
-	 */
-	public Integer getRrUserProfileId() {
-		return rrUserProfileId;
-	}
-
-	/**
-	 * @param rrUserProfileId
-	 *            the rrUserProfileId to set
-	 */
-	public void setRrUserProfileId(Integer rrUserProfileId) {
-		this.rrUserProfileId = rrUserProfileId;
-	}
 
 	/**
 	 * @return the orderId
 	 */
-	public String getOrderId() {
+	public Long getOrderId() {
 		return orderId;
 	}
 
@@ -71,8 +39,38 @@ public class OrderBean {
 	 * @param orderId
 	 *            the orderId to set
 	 */
-	public void setOrderId(String orderId) {
+	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
+	}
+
+	/**
+	 * @return the userProfileId
+	 */
+	public Long getUserProfileId() {
+		return userProfileId;
+	}
+
+	/**
+	 * @param userProfileId
+	 *            the userProfileId to set
+	 */
+	public void setUserProfileId(Long userProfileId) {
+		this.userProfileId = userProfileId;
+	}
+
+	/**
+	 * @return the orderNo
+	 */
+	public String getOrderNo() {
+		return orderNo;
+	}
+
+	/**
+	 * @param orderNo
+	 *            the orderNo to set
+	 */
+	public void setOrderNo(String orderNo) {
+		this.orderNo = orderNo;
 	}
 
 	/**
@@ -166,18 +164,18 @@ public class OrderBean {
 	}
 
 	/**
-	 * @return the brand
+	 * @return the brandId
 	 */
-	public String getBrand() {
-		return brand;
+	public Long getBrandId() {
+		return brandId;
 	}
 
 	/**
-	 * @param brand
-	 *            the brand to set
+	 * @param brandId
+	 *            the brandId to set
 	 */
-	public void setBrand(String brand) {
-		this.brand = brand;
+	public void setBrandId(Long brandId) {
+		this.brandId = brandId;
 	}
 
 	/**
@@ -198,7 +196,7 @@ public class OrderBean {
 	/**
 	 * @return the dueTime
 	 */
-	public Date getDueTime() {
+	public String getDueTime() {
 		return dueTime;
 	}
 
@@ -206,7 +204,7 @@ public class OrderBean {
 	 * @param dueTime
 	 *            the dueTime to set
 	 */
-	public void setDueTime(Date dueTime) {
+	public void setDueTime(String dueTime) {
 		this.dueTime = dueTime;
 	}
 
@@ -288,7 +286,7 @@ public class OrderBean {
 	/**
 	 * @return the createdBy
 	 */
-	public Integer getCreatedBy() {
+	public Long getCreatedBy() {
 		return createdBy;
 	}
 
@@ -296,7 +294,7 @@ public class OrderBean {
 	 * @param createdBy
 	 *            the createdBy to set
 	 */
-	public void setCreatedBy(Integer createdBy) {
+	public void setCreatedBy(Long createdBy) {
 		this.createdBy = createdBy;
 	}
 

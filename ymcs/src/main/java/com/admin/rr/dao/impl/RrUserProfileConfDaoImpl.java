@@ -60,7 +60,7 @@ public class RrUserProfileConfDaoImpl implements RrUserProfileConfDao {
 
 		try {
 			userProfileList = sessionFactory.getCurrentSession()
-					.createQuery("select cm from RrUserProfile cm where cm.deleteStatus=0").list();
+					.createQuery("select cm from RrUserProfile cm where cm.rrUserProfileId<>1 and cm.status in ('Online', 'Offline')").list();
 		} catch (Exception e) {
 			logger.error("@@@ Exception in RrUserProfileConfDaoImpl at getAllUserProfiles(): ", e);
 		}

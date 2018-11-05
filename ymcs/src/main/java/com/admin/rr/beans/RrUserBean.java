@@ -1,5 +1,7 @@
 package com.admin.rr.beans;
 
+import com.admin.rr.constants.RrConstants;
+
 /**
  * 
  * @author jogeswar
@@ -20,7 +22,7 @@ public class RrUserBean {
 	private Long roleId;
 	private String dateOfBirth;
 	private String gender;
-	private String status;
+	private String status = RrConstants.ONLINE;
 	private String statusClass;
 	private Long userProfileId = 0L;
 	private String userName;

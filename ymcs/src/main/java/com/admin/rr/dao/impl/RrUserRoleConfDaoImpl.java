@@ -33,7 +33,7 @@ public class RrUserRoleConfDaoImpl implements RrUserRoleConfDao {
 
 		try {
 			userRoleMasterList = sessionFactory.getCurrentSession()
-					.createQuery("select rm from RrUserRoleMaster rm where rm.deleteStatus=0").list();
+					.createQuery("select rm from RrUserRoleMaster rm where rm.status in ('Online', 'Offline')").list();
 		} catch (Exception e) {
 			logger.error("@@@ Exception in RrUserRoleConfDaoImpl at getAllUserRoleList(): ", e);
 		}

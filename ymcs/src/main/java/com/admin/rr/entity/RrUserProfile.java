@@ -40,7 +40,7 @@ public class RrUserProfile extends BaseEntity implements java.io.Serializable {
 	private RrStateMaster rrStateMaster;
 	private RrUserRoleMaster rrUserRoleMaster;
 	private String userName;
-	private String userPwd;
+	private String userPwrd;
 	private String userTitle;
 	private String gender;
 	private String firstName;
@@ -127,12 +127,12 @@ public class RrUserProfile extends BaseEntity implements java.io.Serializable {
 	}
 
 	@Column(name = "USER_PWD", nullable = false)
-	public String getUserPwd() {
-		return this.userPwd;
+	public String getUserPwrd() {
+		return this.userPwrd;
 	}
 
-	public void setUserPwd(String userPwd) {
-		this.userPwd = userPwd;
+	public void setUserPwrd(String userPwrd) {
+		this.userPwrd = userPwrd;
 	}
 
 	@Column(name = "USER_TITLE", nullable = false, length = 8)
@@ -217,7 +217,7 @@ public class RrUserProfile extends BaseEntity implements java.io.Serializable {
 		this.profilePhotoImg = profilePhotoImg;
 	}
 
-	@Column(name = "VOTER_ID_NO", nullable = false, length = 10)
+	@Column(name = "VOTER_ID_NO", nullable = false, length = 20)
 	public String getVoterIdNo() {
 		return this.voterIdNo;
 	}

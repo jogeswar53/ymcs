@@ -2,9 +2,7 @@ package com.admin.rr.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,7 +18,6 @@ import com.admin.rr.dao.RrUserProfileConfDao;
 import com.admin.rr.entity.RrCountryMaster;
 import com.admin.rr.entity.RrOrganizationMaster;
 import com.admin.rr.entity.RrStateMaster;
-import com.admin.rr.entity.RrUserProfile;
 import com.admin.rr.entity.RrUserProfile;
 import com.admin.rr.entity.RrUserRoleMaster;
 import com.admin.rr.service.RrCommonService;
@@ -67,7 +64,7 @@ public class RrUserProfileConfServiceImpl implements RrUserProfileConfService {
 				// creating UserRegister Entry
 				userProfile = new RrUserProfile();
 				userProfile.setUserName(userBean.getUserName());
-				userProfile.setUserPwd(userBean.getUpassword());
+				userProfile.setUserPwrd(userBean.getUpassword());
 
 				// creating UserProfile Entry
 				if ((null != userBean.getProfilePhotoImg()) && (!userBean.getProfilePhotoImg().isEmpty())) {
@@ -164,7 +161,7 @@ public class RrUserProfileConfServiceImpl implements RrUserProfileConfService {
 	public List<RrUserBean> getAllUserProfiles() {
 
 		List<RrUserProfile> userProfileList = null;
-		List<RrUserBean> classBeanList = new ArrayList<>();
+		List<RrUserBean> userBeanList = new ArrayList<>();
 
 		RrUserBean userBean = null;
 
@@ -182,14 +179,14 @@ public class RrUserProfileConfServiceImpl implements RrUserProfileConfService {
 					userBean.setStatus(userProfile.getStatus());
 					userBean.setStatusClass(RrCommonUtils.setStatusClass(userProfile.getStatus()));
 
-					classBeanList.add(userBean);
+					userBeanList.add(userBean);
 				}
 			}
 		} catch (Exception e) {
 			logger.error("@@@ Exception in RrUserProfileConfServiceImpl at getAllUserProfiles(): ", e);
 		}
 
-		return classBeanList;
+		return userBeanList;
 	}
 
 	@Override

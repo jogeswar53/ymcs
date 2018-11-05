@@ -1,14 +1,16 @@
 package com.admin.rr.entity;
 // Generated Nov 4, 2018 2:06:54 PM by Hibernate Tools 5.2.3.Final
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -35,6 +37,7 @@ public class RrOrder extends BaseEntity implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Long rrOrderId;
+	private RrBrandMaster rrBrandMaster;
 	private RrUserProfile rrUserProfile;
 	private String orderNo;
 	private String firstName;
@@ -43,7 +46,6 @@ public class RrOrder extends BaseEntity implements java.io.Serializable {
 	private String mobileNo;
 	private String emailId;
 	private String address;
-	private String brand;
 	private String model;
 	private Date dueTime;
 	private String accessories;
@@ -63,6 +65,16 @@ public class RrOrder extends BaseEntity implements java.io.Serializable {
 
 	public void setRrOrderId(Long rrOrderId) {
 		this.rrOrderId = rrOrderId;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "RR_BRAND_MASTER_ID", nullable = false)
+	public RrBrandMaster getRrBrandMaster() {
+		return this.rrBrandMaster;
+	}
+
+	public void setRrBrandMaster(RrBrandMaster rrBrandMaster) {
+		this.rrBrandMaster = rrBrandMaster;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -136,15 +148,6 @@ public class RrOrder extends BaseEntity implements java.io.Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	@Column(name = "BRAND", nullable = false)
-	public String getBrand() {
-		return this.brand;
-	}
-
-	public void setBrand(String brand) {
-		this.brand = brand;
 	}
 
 	@Column(name = "MODEL", nullable = false)

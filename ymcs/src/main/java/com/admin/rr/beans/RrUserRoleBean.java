@@ -1,5 +1,7 @@
 package com.admin.rr.beans;
 
+import com.admin.rr.constants.RrConstants;
+
 /**
  * @author jogeswarsahu
  *
@@ -18,7 +20,7 @@ public class RrUserRoleBean {
 	private String modifiedTime;
 	private String modifiedBy;
 
-	private String status;
+	private String status = RrConstants.ONLINE;
 	private String statusClass;
 
 	/**

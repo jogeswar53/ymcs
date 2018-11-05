@@ -76,10 +76,10 @@
 															<td>${ i.count }</td>
 															<td>${ userRoleMaster.roleName }</td>
 															<td>${ userRoleMaster.menuName }</td>
-															<td class="${ userRoleMaster.activeStatusClass }">${ userRoleMaster.activeStatusValue }</td>
+															<td class="${ userRoleMaster.statusClass }">${ userRoleMaster.status }</td>
 															<td>
 																<span class="editUserRole">
-																	<a href="${contextPath}/admin/updateUserRole?pid=2&mid=12&userRoleId=${ userRoleMaster.userRoleId }"><i class="fa fa-edit"></i></a>
+																	<a href="${contextPath}/admin/updateUserRole?pid=0&mid=7&userRoleId=${ userRoleMaster.userRoleId }"><i class="fa fa-edit"></i></a>
 																</span>
 																<span class="deleteUserRole" data-target="#deleteUserRoleModel">
 																	<i class="fa fa-trash"></i>
@@ -130,7 +130,7 @@
 														<c:forEach items="${activeStatus}" var="status">
 															<li>
 																<label>
-																	<form:radiobutton path="activeStatus" class="css-checkbox" id="${status.key}" value="${status.key}" />
+																	<form:radiobutton path="status" class="css-checkbox" id="${status.key}" value="${status.key}" />
 																	<label for="${status.key}" class="css-label radGroup2">${status.value}</label>
 																</label>
 															</li>
@@ -141,7 +141,7 @@
 										</div>
 										<div class="row ">
 											<div class="col-md-8 text-center pull-right">
-												<a class="btn navbar-btn btn-default" href="${contextPath}/admin/createUserRole?pid=2&mid=12">Cancel</a> &nbsp;&nbsp;
+												<a class="btn navbar-btn btn-default" href="${contextPath}/admin/createUserRole?pid=0&mid=7">Cancel</a> &nbsp;&nbsp;
 												<a class="btn navbar-btn btn-primary" onclick="$(this).closest('form').submit();">Save</a>
 											</div>
 										</div>
@@ -160,7 +160,7 @@
 <script src="${contextPath}/static/js/plugins/jstree.min.js"></script>
 
 <script>
-changeURL('admin/createUserRole?pid=2&mid=12');
+changeURL('admin/createUserRole?pid=0&mid=7');
 rradminportal.common();
 var data = JSON.parse('${ MenuList }');
 rradminportal.createRole(data);

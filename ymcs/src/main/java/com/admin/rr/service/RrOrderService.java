@@ -21,7 +21,13 @@ public interface RrOrderService {
 
 	public boolean updateOrder(OrderBean orderBean);
 
+	public boolean updateOrderInvoice(OrderBean orderBean);
+
+	public boolean updateOrderReceipt(OrderBean orderBean);
+
 	public OrderBean getOrder(Long orderId);
+
+	public OrderBean getOrder(String orderNo);
 
 	public List<OrderBean> getAllOrders();
 

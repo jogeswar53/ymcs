@@ -55,6 +55,7 @@ public class RrOrder extends BaseEntity implements java.io.Serializable {
 	private String totalAmount;
 	private String particulars;
 	private String orderStatus;
+	private String paymentStatus;
 	private String status;
 	private Set<RrInvoice> rrInvoices = new HashSet<>(0);
 
@@ -234,6 +235,15 @@ public class RrOrder extends BaseEntity implements java.io.Serializable {
 
 	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
+	}
+
+	@Column(name = "PAYMENT_STATUS", length = 8)
+	public String getPaymentStatus() {
+		return this.paymentStatus;
+	}
+
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
 	}
 
 	@Column(name = "STATUS", nullable = false, length = 7)

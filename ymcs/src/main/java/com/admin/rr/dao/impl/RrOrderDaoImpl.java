@@ -65,6 +65,26 @@ public class RrOrderDaoImpl implements RrOrderDao {
 	/*
 	 * (non-Javadoc)
 	 * 
+	 * @see com.admin.rr.dao.RrOrderDao#getOrderById(java.lang.Long)
+	 */
+	@Override
+	public RrOrder getOrderByNo(String orderNo) {
+
+		RrOrder order = null;
+
+		try {
+			order = (RrOrder) sessionFactory.getCurrentSession().createQuery("from RrOrder where orderNo=:orderNo")
+					.setParameter("orderNo", orderNo).uniqueResult();
+		} catch (Exception e) {
+			logger.error("", e);
+		}
+
+		return order;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.admin.rr.dao.RrOrderDao#getAllOrders()
 	 */
 	@SuppressWarnings("unchecked")

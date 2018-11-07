@@ -14,6 +14,8 @@ public interface RrOrderDao {
 
 	public RrOrder getOrderById(Long orderId);
 
+	public RrOrder getOrderByNo(String orderNo);
+
 	public List<RrOrder> getAllOrders();
 
 }

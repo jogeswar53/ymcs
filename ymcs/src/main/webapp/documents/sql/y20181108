@@ -81,37 +81,32 @@ INSERT INTO `RR_COUNTRY_MASTER` VALUES (1,'IN','India','+91','INR','Indian Rupee
 UNLOCK TABLES;
 
 --
--- Table structure for table `RR_INVOICE`
+-- Table structure for table `RR_ISSUE_MASTER`
 --
 
-DROP TABLE IF EXISTS `RR_INVOICE`;
+DROP TABLE IF EXISTS `RR_ISSUE_MASTER`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `RR_INVOICE` (
-  `RR_INVOICE_ID` bigint(11) NOT NULL AUTO_INCREMENT,
-  `RR_ORDER_ID` bigint(11) NOT NULL,
-  `PAID_AMOUNT` varchar(255) NOT NULL,
-  `PENDING_AMOUNT` varchar(255) NOT NULL,
-  `TOTAL_AMOUNT` varchar(255) NOT NULL,
-  `PARTICULARS` text,
-  `PAYMENT_STATUS` enum('Paid','Not Paid') NOT NULL DEFAULT 'Not Paid',
-  `CREATED_TIME` datetime DEFAULT NULL,
+CREATE TABLE `RR_ISSUE_MASTER` (
+  `RR_ISSUE_MASTER_ID` bigint(11) NOT NULL AUTO_INCREMENT,
+  `ISSUE_NAME` varchar(255) NOT NULL,
+  `STATUS` enum('Online','Offline','Deleted') NOT NULL DEFAULT 'Online',
+  `CREATED_TIME` datetime DEFAULT CURRENT_TIMESTAMP,
   `CREATED_BY` bigint(11) DEFAULT NULL,
-  `MODIFIED_TIME` datetime DEFAULT NULL,
+  `MODIFIED_TIME` datetime DEFAULT CURRENT_TIMESTAMP,
   `MODIFIED_BY` bigint(11) DEFAULT NULL,
-  PRIMARY KEY (`RR_INVOICE_ID`),
-  KEY `INVOICE_ORDER_ID_FOREIGN_KEY` (`RR_ORDER_ID`),
-  CONSTRAINT `INVOICE_ORDER_ID_FOREIGN_KEY` FOREIGN KEY (`RR_ORDER_ID`) REFERENCES `RR_ORDER` (`RR_ORDER_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`RR_ISSUE_MASTER_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `RR_INVOICE`
+-- Dumping data for table `RR_ISSUE_MASTER`
 --
 
-LOCK TABLES `RR_INVOICE` WRITE;
-/*!40000 ALTER TABLE `RR_INVOICE` DISABLE KEYS */;
-/*!40000 ALTER TABLE `RR_INVOICE` ENABLE KEYS */;
+LOCK TABLES `RR_ISSUE_MASTER` WRITE;
+/*!40000 ALTER TABLE `RR_ISSUE_MASTER` DISABLE KEYS */;
+INSERT INTO `RR_ISSUE_MASTER` VALUES (1,'Lense not working','Online','2018-11-07 11:55:38',NULL,'2018-11-07 11:55:38',NULL);
+/*!40000 ALTER TABLE `RR_ISSUE_MASTER` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -135,7 +130,7 @@ CREATE TABLE `RR_MENUS` (
   `ACTIVE_STATUS` tinyint(1) NOT NULL DEFAULT '1',
   `DELETE_STATUS` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`RR_MENUS_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +139,7 @@ CREATE TABLE `RR_MENUS` (
 
 LOCK TABLES `RR_MENUS` WRITE;
 /*!40000 ALTER TABLE `RR_MENUS` DISABLE KEYS */;
-INSERT INTO `RR_MENUS` VALUES (1,'001','Dashboard','Dashboard','admin/dashboard?pid=0&mid=1','fa-dashboard','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(2,'002','Create Menu','Create Menu','admin/createMenu?pid=0&mid=2','fa-list-ul','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(3,'003','Create Country','Create Country','admin/createCountry?pid=0&mid=3','fa-flag','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(4,'004','Create State','Create State','admin/createState?pid=0&mid=4','fa-circle-o','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(5,'005','Create Organization','Create Organization','admin/createOrganization?pid=0&mid=5','fa-circle-o','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(6,'006','Create User','Create User','admin/createUser?pid=0&mid=6','fa-circle-o','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(7,'007','Create User Role','Create User Role','admin/createUserRole?pid=0&mid=7','fa-circle-o','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(8,'008','Order','Take Order','admin/order?pid=0&mid=8','fa-circle-o','2018-11-04 10:45:39','1',NULL,NULL,1,0),(9,'009','Update Invoice','Update Invoice Amount','admin/updateInvoice?pid=0&mid=9','fa-circle-o','2018-11-04 10:47:55','1',NULL,NULL,1,0),(10,'010','Receipt','Generate Receipt','admin/receipt?pid=0&mid=10','fa-circle-o','2018-11-04 10:48:32','1',NULL,NULL,1,0),(11,'011','Brand Master','Brand Master','admin/createBrand?pid=0&mid=11','fa-circle-o','2018-11-06 03:38:49','1','2018-11-06 03:38:49',NULL,1,0);
+INSERT INTO `RR_MENUS` VALUES (1,'001','Dashboard','Dashboard','admin/dashboard?pid=0&mid=1','fa-dashboard','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(2,'002','Create Menu','Create Menu','admin/createMenu?pid=0&mid=2','fa-list-ul','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(3,'003','Create Country','Create Country','admin/createCountry?pid=0&mid=3','fa-flag','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(4,'004','Create State','Create State','admin/createState?pid=0&mid=4','fa-circle-o','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(5,'005','Create Organization','Create Organization','admin/createOrganization?pid=0&mid=5','fa-circle-o','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(6,'007','Create User','Create User','admin/createUser?pid=0&mid=6','fa-circle-o','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(7,'006','Create User Role','Create User Role','admin/createUserRole?pid=0&mid=7','fa-circle-o','2018-04-08 12:20:20',NULL,NULL,NULL,1,0),(8,'008-001','Take Order','Take Order','admin/order?pid=12&mid=8','fa-circle-o','2018-11-04 10:45:39','1',NULL,NULL,1,0),(9,'009','Update Invoice','Update Invoice Amount','admin/searchOrderInvoice?pid=0&mid=9','fa-circle-o','2018-11-04 10:47:55','1',NULL,NULL,1,0),(10,'010','Receipt','Generate Receipt','admin/searchOrderReceipt?pid=0&mid=10','fa-circle-o','2018-11-04 10:48:32','1',NULL,NULL,1,0),(11,'011','Brand Master','Brand Master','admin/createBrand?pid=0&mid=11','fa-circle-o','2018-11-06 03:38:49','1','2018-11-06 03:38:49',NULL,1,0),(12,'008','Order','Order',NULL,'fa-circle-o',NULL,NULL,NULL,NULL,1,0),(13,'008-002','View Orders','View All Orders','admin/viewOrders?pid=12&mid=13','fa-circle-o','2018-11-07 13:13:47','1','2018-11-07 13:13:47',NULL,1,0),(14,'012','Work List','View All The Orders','admin/workList?pid=0&mid=14','fa-circle-o','2018-11-07 14:02:04','1','2018-11-07 14:02:04',NULL,1,0),(15,'013','Issue Master','Issue Master is used to create the common issues.','admin/createIssue?pid=0&mid=15','fa-circle-o','2018-11-07 15:36:52','1','2018-11-07 15:36:52',NULL,1,0);
 /*!40000 ALTER TABLE `RR_MENUS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,6 +154,7 @@ CREATE TABLE `RR_ORDER` (
   `RR_ORDER_ID` bigint(11) NOT NULL AUTO_INCREMENT,
   `RR_USER_PROFILE_ID` bigint(11) NOT NULL,
   `RR_BRAND_MASTER_ID` bigint(11) NOT NULL,
+  `RR_ISSUE_MASTER_ID` bigint(11) NOT NULL,
   `ORDER_NO` varchar(255) NOT NULL,
   `FIRST_NAME` varchar(255) NOT NULL,
   `MIDDLE_NAME` varchar(50) DEFAULT NULL,
@@ -168,22 +164,27 @@ CREATE TABLE `RR_ORDER` (
   `ADDRESS` varchar(255) DEFAULT NULL,
   `MODEL` varchar(255) NOT NULL,
   `DUE_TIME` datetime DEFAULT NULL,
-  `ACCESSORIES` varchar(255) DEFAULT NULL,
-  `PAID_AMOUNT` varchar(255) DEFAULT NULL,
-  `ISSUE` text,
+  `ACCESSORIES` text,
   `ISSUE_DESCRIPTION` text,
+  `PAID_AMOUNT` varchar(20) DEFAULT NULL,
+  `TOTAL_AMOUNT` varchar(20) DEFAULT NULL,
+  `PARTICULARS` text,
+  `ORDER_STATUS` enum('NEW','IN_PROGRESS','RESOLVED','REJECTED') NOT NULL DEFAULT 'NEW',
+  `PAYMENT_STATUS` enum('PAID','NOT_PAID') DEFAULT 'NOT_PAID',
   `STATUS` enum('Online','Offline','Deleted') NOT NULL DEFAULT 'Online',
-  `CREATED_TIME` datetime DEFAULT NULL,
+  `CREATED_TIME` datetime DEFAULT CURRENT_TIMESTAMP,
   `CREATED_BY` bigint(11) DEFAULT NULL,
-  `MODIFIED_TIME` datetime DEFAULT NULL,
+  `MODIFIED_TIME` datetime DEFAULT CURRENT_TIMESTAMP,
   `MODIFIED_BY` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`RR_ORDER_ID`),
   UNIQUE KEY `ORDER_ORDER_NO` (`ORDER_NO`),
   KEY `ORDER_USER_PROFILE_ID_FOREIGN_KEY` (`RR_USER_PROFILE_ID`),
   KEY `ORDER_BRAND_MASTER_ID_FOREIGN_KEY` (`RR_BRAND_MASTER_ID`),
+  KEY `ORDER_ISSUE_MASTER_ID_FOREIGN_KEY` (`RR_ISSUE_MASTER_ID`),
   CONSTRAINT `ORDER_BRAND_MASTER_ID_FOREIGN_KEY` FOREIGN KEY (`RR_BRAND_MASTER_ID`) REFERENCES `RR_BRAND_MASTER` (`RR_BRAND_MASTER_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ORDER_ISSUE_MASTER_ID_FOREIGN_KEY` FOREIGN KEY (`RR_ISSUE_MASTER_ID`) REFERENCES `RR_ISSUE_MASTER` (`RR_ISSUE_MASTER_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ORDER_USER_PROFILE_ID_FOREIGN_KEY` FOREIGN KEY (`RR_USER_PROFILE_ID`) REFERENCES `RR_USER_PROFILE` (`RR_USER_PROFILE_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,6 +193,7 @@ CREATE TABLE `RR_ORDER` (
 
 LOCK TABLES `RR_ORDER` WRITE;
 /*!40000 ALTER TABLE `RR_ORDER` DISABLE KEYS */;
+INSERT INTO `RR_ORDER` VALUES (1,2,1,1,'1541620894024','Jogeswar',NULL,'Sahu','7338552253','jogeswar53@gmail.com','Address','xxtttdd-d','2018-11-26 00:00:00','Accessories','Issue Description','100,100','200','1541603855869','NEW','NOT_PAID','Online','2018-11-07 12:59:27',NULL,'2018-11-07 12:59:27',NULL),(2,2,1,1,'1541602908812','Bipin',NULL,'D','7676788485','bipin@gmail.com','adsfsda','sadfsadf','2018-11-20 00:00:00','Accessories','asdfasdf','200','2000','Bought new iteams','NEW','PAID','Online','2018-11-07 20:32:25',NULL,'2018-11-07 20:32:25',NULL);
 /*!40000 ALTER TABLE `RR_ORDER` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,7 +271,7 @@ CREATE TABLE `RR_PERMISSION_MASTER` (
   KEY `PERMISSION_MASTER_MENUS_ID_FK` (`RR_MENUS_ID`),
   CONSTRAINT `PERMISSION_MASTER_MENUS_ID_FK` FOREIGN KEY (`RR_MENUS_ID`) REFERENCES `RR_MENUS` (`RR_MENUS_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `PERMISSION_MASTER_USER_ROLE_MASTER_ID_FK` FOREIGN KEY (`RR_USER_ROLE_MASTER_ID`) REFERENCES `RR_USER_ROLE_MASTER` (`RR_USER_ROLE_MASTER_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -278,7 +280,7 @@ CREATE TABLE `RR_PERMISSION_MASTER` (
 
 LOCK TABLES `RR_PERMISSION_MASTER` WRITE;
 /*!40000 ALTER TABLE `RR_PERMISSION_MASTER` DISABLE KEYS */;
-INSERT INTO `RR_PERMISSION_MASTER` VALUES (1,1,1,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(2,1,2,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(3,1,3,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(4,1,4,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(5,1,5,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(6,1,6,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(7,1,7,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(8,1,8,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(9,1,9,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(10,1,10,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(11,1,11,0,0,0,0,0,0,0,'Online',NULL,NULL,NULL,NULL);
+INSERT INTO `RR_PERMISSION_MASTER` VALUES (1,1,1,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(2,1,2,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(3,1,3,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(4,1,4,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(5,1,5,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(6,1,6,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(7,1,7,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(8,1,8,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(9,1,9,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(10,1,10,0,0,0,0,0,0,0,'Online','2018-11-04 13:56:43',1,NULL,NULL),(11,1,11,0,0,0,0,0,0,0,'Online',NULL,NULL,NULL,NULL),(12,1,12,0,0,0,0,0,0,0,'Online',NULL,NULL,NULL,NULL),(13,1,13,0,0,0,0,0,0,0,'Online',NULL,NULL,NULL,NULL),(14,1,14,0,0,0,0,0,0,0,'Online',NULL,NULL,NULL,NULL),(15,1,15,0,0,0,0,0,0,0,'Online',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `RR_PERMISSION_MASTER` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,7 +379,7 @@ CREATE TABLE `RR_USER_PROFILE` (
 
 LOCK TABLES `RR_USER_PROFILE` WRITE;
 /*!40000 ALTER TABLE `RR_USER_PROFILE` DISABLE KEYS */;
-INSERT INTO `RR_USER_PROFILE` VALUES (1,1,1,1,1,'admin','f925916e2754e5e03f75dd58a5733251','Mr','Male','Jogeswar',NULL,'Sahu','jogeswar53@gmail.com','7338552253',NULL,'user/admin1.jpeg','V153',NULL,'A123',NULL,'2018-11-04 14:02:55',NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-06 03:13:42','2018-11-04 14:02:55',1,NULL,NULL,'Online'),(2,3,1,1,1,'prajeeth','prajeeth@123','Mr','Male','Prajeeth','','Kumar','prajeeth@gmail.com','72338555253','2018-08-11 00:00:00','user/Prajeeth_1541453904713.jpeg','sdfsdf',NULL,'asdfsadf',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-06 03:08:24',1,'2018-11-06 03:08:24',NULL,'Online');
+INSERT INTO `RR_USER_PROFILE` VALUES (1,1,1,1,1,'admin','f925916e2754e5e03f75dd58a5733251','Mr','Male','Jogeswar',NULL,'Sahu','jogeswar53@gmail.com','7338552253',NULL,'user/admin1.jpeg','V153',NULL,'A123',NULL,'2018-11-04 14:02:55',NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-08 01:26:59','2018-11-04 14:02:55',1,NULL,NULL,'Online'),(2,3,1,1,1,'prajeeth','prajeeth@123','Mr','Male','Prajeeth','','Kumar','prajeeth@gmail.com','72338555253','2018-08-11 00:00:00','user/Prajeeth_1541453904713.jpeg','sdfsdf',NULL,'asdfsadf',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-06 03:08:24',1,'2018-11-06 03:08:24',NULL,'Online');
 /*!40000 ALTER TABLE `RR_USER_PROFILE` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -421,4 +423,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-06  4:44:13
+-- Dump completed on 2018-11-08  1:39:07

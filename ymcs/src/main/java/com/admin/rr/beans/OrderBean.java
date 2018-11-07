@@ -34,9 +34,11 @@ public class OrderBean {
 	private Long createdBy;
 	private String status;
 
+	private String pendingAmount;
 	private String totalAmount;
 	private String particulars;
 	private String orderStatus;
+	private String paymentStatus = "NOT_PAID";
 
 	/**
 	 * @return the orderId
@@ -426,6 +428,36 @@ public class OrderBean {
 	 */
 	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
+	}
+
+	/**
+	 * @return the paymentStatus
+	 */
+	public String getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	/**
+	 * @param paymentStatus
+	 *            the paymentStatus to set
+	 */
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+	/**
+	 * @return the pendingAmount
+	 */
+	public String getPendingAmount() {
+		return pendingAmount;
+	}
+
+	/**
+	 * @param pendingAmount
+	 *            the pendingAmount to set
+	 */
+	public void setPendingAmount(String pendingAmount) {
+		this.pendingAmount = pendingAmount;
 	}
 
 }

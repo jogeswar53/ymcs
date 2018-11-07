@@ -94,10 +94,10 @@
 											<div class="col-md-4">
 												<div class="form-group">
 													<label>Brand</label><span class="mandatory_star">*</span>
-														<form:select path="brandId" class="form-control select2">
-															<form:option value="">Select Brand</form:option>
-															<form:options items="${brandMap}" />
-														</form:select>
+													<form:select path="brandId" class="form-control select2">
+														<form:option value="">Select Brand</form:option>
+														<form:options items="${brandMap}" />
+													</form:select>
 												</div>
 											</div>
 										</div>
@@ -111,10 +111,10 @@
 											<div class="col-md-4">
 												<div class="form-group">
 													<label>Assigned To</label><span class="mandatory_star">*</span>
-														<form:select path="userProfileId" class="form-control select2">
-															<form:option value="">Select User</form:option>
-															<form:options items="${userMap}" />
-														</form:select>
+													<form:select path="userProfileId" class="form-control select2">
+														<form:option value="">Select User</form:option>
+														<form:options items="${userMap}" />
+													</form:select>
 												</div>
 											</div>
 											<div class="col-md-4">
@@ -157,6 +157,15 @@
 												<div class="form-group">
 													<label>Advanced Amount</label>
 													<form:input type="text" id="paidAmount" path="paidAmount" class="form-control" />
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label>Payment Status</label>
+													<form:select path="paymentStatus" class="form-control select2">
+														<form:option value="">Select Status</form:option>
+														<form:options items="${paymentStatusMap}" />
+													</form:select>
 												</div>
 											</div>
 										</div>

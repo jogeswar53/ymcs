@@ -63,6 +63,7 @@
 														<th>First Name</th>
 														<th>Address</th>
 														<th>Mobile No</th>
+														<th>Payment Status</th>
 														<th>Action</th>
 													</tr>
 												</thead>
@@ -78,6 +79,7 @@
 															<td>${ order.firstName }</td>
 															<td>${ order.address }</td>
 															<td>${ order.mobileNo }</td>
+															<td>${fn:replace(order.paymentStatus, '_', ' ')}</td>
 															<td>
 																<span class="deleteOrder" data-target="#deleteOrderModel">
 																	<i class="fa fa-trash"></i>

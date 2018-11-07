@@ -52,12 +52,20 @@
 
 
 
-	<definition name="createClass" extends="base.definition">
-		<put-attribute name="body" value="/WEB-INF/jsp/admin/class/createClass.jsp" />
+	<definition name="createBrand" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/brand/createBrand.jsp" />
 	</definition>
 
-	<definition name="updateClass" extends="base.definition">
-		<put-attribute name="body" value="/WEB-INF/jsp/admin/class/updateClass.jsp" />
+	<definition name="updateBrand" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/brand/updateBrand.jsp" />
+	</definition>
+
+	<definition name="createIssue" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/issue/createIssue.jsp" />
+	</definition>
+
+	<definition name="updateIssue" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/issue/updateIssue.jsp" />
 	</definition>
 
 
@@ -127,8 +135,16 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/admin/order/workList.jsp" />
 	</definition>
 
-	<definition name="updateInvoice" extends="base.definition">
-		<put-attribute name="body" value="/WEB-INF/jsp/admin/invoice/updateInvoice.jsp" />
+	<definition name="searchOrderInvoice" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/order/searchOrderInvoice.jsp" />
+	</definition>
+
+	<definition name="searchOrderReceipt" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/order/searchOrderReceipt.jsp" />
+	</definition>
+
+	<definition name="printOrderReceipt" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/order/printOrderReceipt.jsp" />
 	</definition>
 
 <!--  newly added end -->

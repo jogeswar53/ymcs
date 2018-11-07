@@ -14,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.admin.rr.beans.OrderBean;
 import com.admin.rr.constants.RrConstants;
+import com.admin.rr.dao.RrBrandConfDao;
+import com.admin.rr.dao.RrIssueConfDao;
 import com.admin.rr.dao.RrOrderDao;
 import com.admin.rr.dao.RrUserProfileConfDao;
 import com.admin.rr.entity.RrBrandMaster;
@@ -38,6 +40,12 @@ public class RrOrderServiceImpl implements RrOrderService {
 
 	@Autowired
 	RrOrderDao orderDao;
+
+	@Autowired
+	RrBrandConfDao brandConfDao;
+
+	@Autowired
+	RrIssueConfDao issueConfDao;
 
 	/*
 	 * (non-Javadoc)
@@ -76,9 +84,16 @@ public class RrOrderServiceImpl implements RrOrderService {
 	public Map<Long, String> getBrandMap() {
 
 		Map<Long, String> brandMap = new HashMap<>();
+		List<RrBrandMaster> brandMasters = new ArrayList<>();
 
 		try {
-			brandMap.put(1L, "Cannon");
+			brandMasters = brandConfDao.getOnlineBrands();
+
+			if (null != brandMasters && !brandMasters.isEmpty()) {
+				for (RrBrandMaster brandMaster : brandMasters) {
+					brandMap.put(brandMaster.getRrBrandMasterId(), brandMaster.getBrandName());
+				}
+			}
 		} catch (Exception e) {
 			logger.error("", e);
 		}
@@ -95,9 +110,16 @@ public class RrOrderServiceImpl implements RrOrderService {
 	public Map<Long, String> getIssueMap() {
 
 		Map<Long, String> issueMap = new HashMap<>();
+		List<RrIssueMaster> issueMasters = new ArrayList<>();
 
 		try {
-			issueMap.put(1L, "Lense is not working");
+			issueMasters = issueConfDao.getOnlineIssues();
+
+			if (null != issueMasters && !issueMasters.isEmpty()) {
+				for (RrIssueMaster issueMaster : issueMasters) {
+					issueMap.put(issueMaster.getRrIssueMasterId(), issueMaster.getIssueName());
+				}
+			}
 		} catch (Exception e) {
 			logger.error("", e);
 		}
@@ -160,11 +182,9 @@ public class RrOrderServiceImpl implements RrOrderService {
 			order.setPaidAmount(orderBean.getPaidAmount());
 			order.setIssueDescription(orderBean.getIssueDescription());
 			order.setStatus(RrConstants.ONLINE);
+			order.setOrderStatus(orderBean.getOrderStatus());
 			order.setPaymentStatus(orderBean.getPaymentStatus());
 			order.setCreatedBy(orderBean.getCreatedBy());
-
-			orderBean.getAccessories();
-			orderBean.getAddress();
 
 			isSuccessYes = orderDao.saveOrUpdateOrder(order);
 

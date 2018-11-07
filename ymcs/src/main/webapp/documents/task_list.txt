@@ -1,0 +1,16 @@
+Task List : 
+-----------
+1. brand master - not done
+2. issue master - not done
+3. Role module - not done
+
+
+CR Request :
+------------
+1. Voter card no and adhar card number should not a mandatory field.
+
+Bugs :
+------
+1. User name unique validation client side - not done.
+2. Mobile no number field validation - not done.
+3. Amount number field validation - not done.

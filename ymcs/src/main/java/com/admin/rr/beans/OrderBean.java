@@ -37,7 +37,7 @@ public class OrderBean {
 	private String pendingAmount;
 	private String totalAmount;
 	private String particulars;
-	private String orderStatus;
+	private String orderStatus = "NEW";
 	private String paymentStatus = "NOT_PAID";
 
 	/**

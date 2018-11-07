@@ -47,14 +47,17 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Take Order</div>
+					<div class="panel-heading">Create Order</div>
 					<div class="panel-body">
 						<div class="menu_tab">
 							<div class="tab-content pt-20px">
 								<div class="tab-pane " id="viewOrder">
 								</div>
 								<div class="tab-pane active" id="addOrder">
-									<form:form id="addOrderForm" commandName="addOrderForm">
+									<form:form id="addOrderForm" commandName="addOrderForm" action="order">
+										<form:hidden path="action" value="update" />
+										<form:hidden path="orderId" value="${ addOrderForm.orderId }" />
+										<form:hidden path="orderNo" value="${ addOrderForm.orderNo }" />
 										<div class="row">
 											<div class="col-md-4">
 												<div class="form-group">
@@ -177,7 +180,6 @@
 </div>
 
 <script>
-changeURL('admin/order?pid=12&mid=8');
 rradminportal.common();
 rradminportal.order();
 </script>

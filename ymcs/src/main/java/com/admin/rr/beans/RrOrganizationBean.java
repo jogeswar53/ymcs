@@ -1,5 +1,7 @@
 package com.admin.rr.beans;
 
+import com.admin.rr.constants.RrConstants;
+
 /**
  * @author jogeswarsahu
  *
@@ -19,11 +21,14 @@ public class RrOrganizationBean {
 	private String organizationAddr3;
 	private String district;
 	private String pincode;
-	private String status;
+	private String status = RrConstants.ONLINE;
 	private String statusClass;
 	private Long organizationId = 0L;
 	private String createdTime;
 	private String createdBy;
+
+	private String telephoneNo;
+	private String mobileNo;
 
 	/**
 	 * @return the countryCode
@@ -263,6 +268,34 @@ public class RrOrganizationBean {
 	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
+	}
+
+	/**
+	 * @return the telephoneNo
+	 */
+	public String getTelephoneNo() {
+		return telephoneNo;
+	}
+
+	/**
+	 * @param telephoneNo the telephoneNo to set
+	 */
+	public void setTelephoneNo(String telephoneNo) {
+		this.telephoneNo = telephoneNo;
+	}
+
+	/**
+	 * @return the mobileNo
+	 */
+	public String getMobileNo() {
+		return mobileNo;
+	}
+
+	/**
+	 * @param mobileNo the mobileNo to set
+	 */
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
 	}
 
 }

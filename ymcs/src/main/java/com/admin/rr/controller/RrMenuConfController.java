@@ -86,7 +86,7 @@ public class RrMenuConfController {
 			logger.error("@@@ Exception in RrMenuConfController at createMenus(-, -): ", e);
 		}
 
-		return "redirect:/admin/createMenu?pid=2&mid=3";
+		return "redirect:/admin/createMenu?pid=0&mid=2";
 	}
 
 	@RequestMapping(value = "/deleteMenu", method = RequestMethod.GET)

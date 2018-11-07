@@ -10,7 +10,7 @@ import com.admin.rr.entity.RrOrganizationMaster;
  */
 public interface RrOrganizationConfDao {
 
-	public String saveOrUpdateOrganization(RrOrganizationMaster organizationMaster);
+	public boolean saveOrUpdateOrganization(RrOrganizationMaster organizationMaster);
 
 	public List<RrOrganizationMaster> getAllOrganizations();
 

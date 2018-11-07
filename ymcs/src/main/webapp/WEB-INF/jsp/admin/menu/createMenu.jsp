@@ -196,7 +196,7 @@
 										</div>
 										<div class="row ">
 											<div class="col-md-8 text-center pull-right">
-												<a class="btn navbar-btn btn-default" href="${contextPath}/admin/createMenu?pid=2&mid=3">Cancel</a> &nbsp;&nbsp;
+												<a class="btn navbar-btn btn-default" href="${contextPath}/admin/createMenu?pid=0&mid=2">Cancel</a> &nbsp;&nbsp;
 												<a class="btn navbar-btn btn-primary" onclick="$(this).closest('form').submit();">Save</a>
 											</div>
 										</div>

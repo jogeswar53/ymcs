@@ -38,6 +38,7 @@ public class RrOrder extends BaseEntity implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Long rrOrderId;
 	private RrBrandMaster rrBrandMaster;
+	private RrIssueMaster rrIssueMaster;
 	private RrUserProfile rrUserProfile;
 	private String orderNo;
 	private String firstName;
@@ -49,9 +50,11 @@ public class RrOrder extends BaseEntity implements java.io.Serializable {
 	private String model;
 	private Date dueTime;
 	private String accessories;
-	private String paidAmount;
-	private String issue;
 	private String issueDescription;
+	private String paidAmount;
+	private String totalAmount;
+	private String particulars;
+	private String orderStatus;
 	private String status;
 	private Set<RrInvoice> rrInvoices = new HashSet<>(0);
 
@@ -75,6 +78,16 @@ public class RrOrder extends BaseEntity implements java.io.Serializable {
 
 	public void setRrBrandMaster(RrBrandMaster rrBrandMaster) {
 		this.rrBrandMaster = rrBrandMaster;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "RR_ISSUE_MASTER_ID", nullable = false)
+	public RrIssueMaster getRrIssueMaster() {
+		return this.rrIssueMaster;
+	}
+
+	public void setRrIssueMaster(RrIssueMaster rrIssueMaster) {
+		this.rrIssueMaster = rrIssueMaster;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -178,6 +191,15 @@ public class RrOrder extends BaseEntity implements java.io.Serializable {
 		this.accessories = accessories;
 	}
 
+	@Column(name = "ISSUE_DESCRIPTION")
+	public String getIssueDescription() {
+		return this.issueDescription;
+	}
+
+	public void setIssueDescription(String issueDescription) {
+		this.issueDescription = issueDescription;
+	}
+
 	@Column(name = "PAID_AMOUNT")
 	public String getPaidAmount() {
 		return this.paidAmount;
@@ -187,22 +209,31 @@ public class RrOrder extends BaseEntity implements java.io.Serializable {
 		this.paidAmount = paidAmount;
 	}
 
-	@Column(name = "ISSUE")
-	public String getIssue() {
-		return this.issue;
+	@Column(name = "TOTAL_AMOUNT", length = 20)
+	public String getTotalAmount() {
+		return this.totalAmount;
 	}
 
-	public void setIssue(String issue) {
-		this.issue = issue;
+	public void setTotalAmount(String totalAmount) {
+		this.totalAmount = totalAmount;
 	}
 
-	@Column(name = "ISSUE_DESCRIPTION")
-	public String getIssueDescription() {
-		return this.issueDescription;
+	@Column(name = "PARTICULARS")
+	public String getParticulars() {
+		return this.particulars;
 	}
 
-	public void setIssueDescription(String issueDescription) {
-		this.issueDescription = issueDescription;
+	public void setParticulars(String particulars) {
+		this.particulars = particulars;
+	}
+
+	@Column(name = "ORDER_STATUS", nullable = false, length = 10)
+	public String getOrderStatus() {
+		return this.orderStatus;
+	}
+
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
 	@Column(name = "STATUS", nullable = false, length = 7)

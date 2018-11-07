@@ -1,5 +1,7 @@
 package com.admin.rr.dao.impl;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.SessionFactory;
@@ -58,6 +60,25 @@ public class RrOrderDaoImpl implements RrOrderDao {
 		}
 
 		return order;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.admin.rr.dao.RrOrderDao#getAllOrders()
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<RrOrder> getAllOrders() {
+
+		List<RrOrder> orders = null;
+
+		try {
+			orders = sessionFactory.getCurrentSession().createQuery("from RrOrder order by rrOrderId desc").list();
+		} catch (Exception e) {
+			logger.error("", e);
+		}
+		return orders;
 	}
 
 }

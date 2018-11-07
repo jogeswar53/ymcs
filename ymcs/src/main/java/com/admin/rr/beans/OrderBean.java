@@ -1,5 +1,7 @@
 package com.admin.rr.beans;
 
+import com.admin.rr.constants.RrConstants;
+
 /**
  * 
  * @author jogeswar
@@ -8,8 +10,10 @@ package com.admin.rr.beans;
 
 public class OrderBean {
 
+	private String action = RrConstants.STRING_EMPTY;
 	private Long orderId;
 	private Long userProfileId;
+	private String userName;
 	private String orderNo;
 	private String firstName;
 	private String middleName;
@@ -18,15 +22,21 @@ public class OrderBean {
 	private String emailId;
 	private String address;
 	private Long brandId;
+	private String brandName;
 	private String model;
 	private String dueTime;
 	private String accessories;
 	private String paidAmount;
-	private String issue;
+	private Long issueId;
+	private String issueName;
 	private String issueDescription;
 	private String createdTime;
 	private Long createdBy;
 	private String status;
+
+	private String totalAmount;
+	private String particulars;
+	private String orderStatus;
 
 	/**
 	 * @return the orderId
@@ -241,16 +251,16 @@ public class OrderBean {
 	/**
 	 * @return the issue
 	 */
-	public String getIssue() {
-		return issue;
+	public Long getIssueId() {
+		return issueId;
 	}
 
 	/**
 	 * @param issue
 	 *            the issue to set
 	 */
-	public void setIssue(String issue) {
-		this.issue = issue;
+	public void setIssueId(Long issueId) {
+		this.issueId = issueId;
 	}
 
 	/**
@@ -311,6 +321,111 @@ public class OrderBean {
 	 */
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	/**
+	 * @return the action
+	 */
+	public String getAction() {
+		return action;
+	}
+
+	/**
+	 * @param action
+	 *            the action to set
+	 */
+	public void setAction(String action) {
+		this.action = action;
+	}
+
+	/**
+	 * @return the userName
+	 */
+	public String getUserName() {
+		return userName;
+	}
+
+	/**
+	 * @param userName
+	 *            the userName to set
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	/**
+	 * @return the brandName
+	 */
+	public String getBrandName() {
+		return brandName;
+	}
+
+	/**
+	 * @param brandName
+	 *            the brandName to set
+	 */
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
+
+	/**
+	 * @return the issueName
+	 */
+	public String getIssueName() {
+		return issueName;
+	}
+
+	/**
+	 * @param issueName
+	 *            the issueName to set
+	 */
+	public void setIssueName(String issueName) {
+		this.issueName = issueName;
+	}
+
+	/**
+	 * @return the totalAmount
+	 */
+	public String getTotalAmount() {
+		return totalAmount;
+	}
+
+	/**
+	 * @param totalAmount
+	 *            the totalAmount to set
+	 */
+	public void setTotalAmount(String totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+
+	/**
+	 * @return the particulars
+	 */
+	public String getParticulars() {
+		return particulars;
+	}
+
+	/**
+	 * @param particulars
+	 *            the particulars to set
+	 */
+	public void setParticulars(String particulars) {
+		this.particulars = particulars;
+	}
+
+	/**
+	 * @return the orderStatus
+	 */
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+
+	/**
+	 * @param orderStatus
+	 *            the orderStatus to set
+	 */
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
 }

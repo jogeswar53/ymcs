@@ -4,7 +4,6 @@ var rradminportal = (function() {
 				$('input[type="text"],input[type="password"]').blur(function(){
 					this.value = $.trim(this.value);
 				});
-				
 				$('.select2').select2();
 				$('.alertMessage').delay(5000).fadeOut();
 				$('.portal-table').DataTable( {
@@ -1171,150 +1170,6 @@ var rradminportal = (function() {
 					$('#deletePermissionModel').data('id', countryid).modal('show');
 				});
 			},
-			hostelMaster : function() {
-				$("#addHostelForm").validate({
-					onkeyup : false,
-					onfocusout: false,
-					focusInvalid: false,
-					focusCleanup: true,
-					ignores:[],
-					rules : {
-						hostelCode : {
-							required : true,
-						},
-						hostelName : {
-							required : true,
-						},
-						hostelAddress : {
-							required : true,
-						},
-						wardenName : {
-							required : true,
-						},
-						wardenContactNo : {
-							required : true,
-						},
-						hostelContactNo : {
-							required : true,
-						}
-					},
-					messages : {
-						hostelCode : {
-							required : "Please Enter Hostel Code",
-						},
-						hostelName : {
-							required : "Please Enter Hostel Name",
-						},
-						hostelAddress : {
-							required : "Please Enter Hostel Address",
-						},
-						wardenName : {
-							required : "Please Enter Warden Name",
-						},
-						wardenContactNo : {
-							required : "Please Enter Warden Contact No",
-						},
-						hostelContactNo : {
-							required : "Please Enter Hostel Contact No",
-						}
-					},
-					errorElement : "div",
-					errorPlacement : function(error, element) {
-						error.insertAfter(element);
-					},
-					submitHandler : function(form) {
-						form.submit();
-					},
-				});
-				$("#editHostelForm").validate({
-					onkeyup : false,
-					onfocusout: false,
-					focusInvalid: false,
-					focusCleanup: true,
-					ignores:[],
-					rules : {
-						hostelCode : {
-							required : true,
-						},
-						hostelName : {
-							required : true,
-						},
-						hostelAddress : {
-							required : true,
-						}
-					},
-					messages : {
-						hostelCode : {
-							required : "Please Enter Hostel Code",
-						},
-						hostelName : {
-							required : "Please Enter Hostel Name",
-						},
-						hostelAddress : {
-							required : "Please Enter Hostel Address",
-						}
-					},
-					errorElement : "div",
-					errorPlacement : function(error, element) {
-						if($(element).hasClass("form-control")) {
-							error.insertAfter($(element).closest("div"));
-						} else {
-							error.insertAfter(element);
-						}
-					},
-					submitHandler : function(form) {
-						form.submit();
-					},
-				});
-				$(".viewHostel").on("click", function(){
-					var id = $(this).closest('tr').data('id');
-					var hostelcode = $(this).closest('tr').data('hostelcode');
-					var hostelname = $(this).closest('tr').data('hostelname');
-
-					$("#viewHostelCode").html(hostelcode);
-					$("#viewHostelName").html(hostelname);
-
-					$('#viewHostelModel').modal({backdrop: 'static', keyboard: false});
-					$('#viewHostelModel').data('id', id).modal('show');
-				});
-				$(".editHostel").on("click", function(){
-					var id = $(this).closest('tr').data('id');
-					var hostelcode = $(this).closest('tr').data('hostelcode');
-					var hostelname = $(this).closest('tr').data('hostelname');
-					var activestatus = $(this).closest('tr').data('activestatus');
-
-					$("#editHostelCode").val(hostelcode);
-					$("#editHostelName").val(hostelname);
-
-					jQuery("input[name=editActiveStatus][value="+activestatus+"]").attr("checked", "true");
-
-					$('#editHostelModel').modal({backdrop: 'static', keyboard: false});
-					$('#editHostelModel').data('id', id).modal('show');
-				});
-				$(document).on('click','#deleteHostelId',function() {
-					var hostelId = $("#delHostelId").val();
-					$.get(ctx + "/admin/deleteHostel?hostelId=" + hostelId,
-						function(status) {
-							if (status == "success") {
-								$('[data-id=' + hostelId + ']').remove();
-								$('#deleteHostelModel').modal('hide');
-								window.location.href = ctx + "/admin/createHostel?pid=2&mid=13&deleteMsg=" + status;
-							}
-							if (status == "failure") {
-								$('[data-id=' + hostelId + ']').remove();
-								$('#deleteHostelModel').modal('hide');
-								window.location.href = ctx + "/admin/createHostel?pid=2&mid=13&deleteMsg=" + status;
-							}
-						}
-					);
-				});
-				$(".deleteHostel").on("click", function(){
-					var hostelid = $(this).closest('tr').data('hostelid');
-					$("#delHostelId").val(hostelid);
-					$('#deleteHostelModel').modal({backdrop: 'static', keyboard: false});
-					$('#deleteHostelModel').data('id', hostelid).modal('show');
-				});
-			},
 			createUser : function() {
 				//Date picker
 				$( "#oldOrgLeavingDate" ).datepicker({
@@ -1677,34 +1532,91 @@ var rradminportal = (function() {
 					$('#deleteUserProfileModel').data('id', userId).modal('show');
 				});
 			},
-			notification : function(){
-				//Date picker
-				$( "#scheduledTime" ).datepicker({
-					dateFormat: 'dd/mm/yy',
+			order : function() {
+				$('#Order_table').DataTable( {
+					"pageLength"    : 20,
+					"bDestroy"      : true,
+					"searching"     : false,
+					"bLengthChange" : false,
+					'paging'        : true,
+					'lengthChange'  : false,
+					'ordering'      : true,
+					'info'          : true,
+					'autoWidth'     : false,
+					order: ['0', 'desc']
+				});
+				$( "#dueTime" ).datepicker({
+					dateFormat: 'dd/mm/yyyy',
 					minDate: '0',
 					showOn: "button",
 					buttonImageOnly: true,
 					buttonText: "Select date",
 					autoclose: true
 				});
-			},
-			leave: function(){
-				//Date picker
-				$( "#startDate" ).datepicker({
-					dateFormat: 'dd/mm/yy',
-					minDate: '0',
-					showOn: "button",
-					buttonImageOnly: true,
-					buttonText: "Select date",
-					autoclose: true
-				});
-				$( "#endDate" ).datepicker({
-					dateFormat: 'dd/mm/yy',
-					minDate: '0',
-					showOn: "button",
-					buttonImageOnly: true,
-					buttonText: "Select date",
-					autoclose: true
+				$("#addOrderForm").validate({
+					onkeyup : false,
+					onfocusout: false,
+					focusInvalid: false,
+					focusCleanup: true,
+					ignores:[],
+					rules : {
+						firstName : {
+							required : true,
+						},
+						mobileNo : {
+							required : true,
+						},
+						brandId : {
+							required : true,
+						},
+						model : {
+							required : true,
+						},
+						userProfileId : {
+							required : true,
+						},
+						issueId : {
+							required : true,
+						}
+					},
+					messages : {
+						firstName : {
+							required : "Please Enter First Name",
+						},
+						mobileNo : {
+							required : "Please Enter Mobile No",
+						},
+						brandId : {
+							required : "Please Select Brand",
+						},
+						model : {
+							required : "Please Enter Model",
+						},
+						userProfileId : {
+							required : "Please Select Assigne To",
+						},
+						issueId : {
+							required : "Please Select an Issue",
+						}
+					},
+					errorElement : "div",
+					errorPlacement : function(error, element) {
+//						console.log($(element).attr('class'));
+						if($(element).hasClass("form-group")) {
+							error.insertAfter($(element).next());
+						} else if ($(element).hasClass("lft_str")) {
+							error.insertAfter($(element).closest("div"));
+						} else if ($(element).hasClass("form-control")) {
+							error.insertAfter($(element).closest("div"));
+						} else if($(element).hasClass("form-control select2 select2-hidden-accessible error")) {
+							error.insertAfter($(element).closest("div"));
+						} else {
+							error.insertAfter(element);
+						}
+					},
+					submitHandler : function(form) {
+						form.submit();
+					},
 				});
 			}
 	};

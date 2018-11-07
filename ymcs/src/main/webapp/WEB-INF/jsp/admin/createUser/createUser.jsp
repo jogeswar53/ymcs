@@ -62,7 +62,7 @@
 											<table id="class_table" class="portal-table table table-bordered table-hover" width="98%">
 												<thead>
 													<tr>
-														<th>Sr.No.</th>
+														<th>Id</th>
 														<th>User Name</th>
 														<th>User Role</th>
 														<th>Status</th>
@@ -71,19 +71,15 @@
 												</thead>
 												<tbody>
 													<c:forEach items="${ userProfileList }" var="userProfile" varStatus="i">
-														<tr data-id="${ i.count }"
-															data-userprofileid="${ userProfile.userProfileId }" >
-															<td>${ i.count }</td>
+														<tr data-id="${ i.count }">
+															<td>
+																<a href="${contextPath}/admin/viewUser?profileId=
+															${ userProfile.userProfileId }&pid=0&mid=6">${ userProfile.userProfileId }</a>
+															</td>
 															<td>${ userProfile.userName }</td>
 															<td>${ userProfile.roleName }</td>
 															<td class="${ userProfile.statusClass }">${ userProfile.status }</td>
-															<td>
-																<span class="viewUserProfile" data-target="#viewUserProfileModel">
-																	<i class="fa fa-eye"></i>
-																</span>
-																<span class="editUserProfile" data-target="#editUserProfileModel">
-																	<i class="fa fa-edit"></i>
-																</span>
+															<td align="center">
 																<span class="deleteUserProfile" data-target="#deleteUserProfileModel">
 																	<i class="fa fa-trash"></i>
 																</span>

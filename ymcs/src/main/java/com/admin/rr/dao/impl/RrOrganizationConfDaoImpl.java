@@ -8,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.admin.rr.constants.RrConstants;
 import com.admin.rr.dao.RrOrganizationConfDao;
 import com.admin.rr.entity.RrOrganizationMaster;
 
@@ -25,18 +24,18 @@ public class RrOrganizationConfDaoImpl implements RrOrganizationConfDao {
 	SessionFactory sessionFactory;
 
 	@Override
-	public String saveOrUpdateOrganization(RrOrganizationMaster organizationMaster) {
+	public boolean saveOrUpdateOrganization(RrOrganizationMaster organizationMaster) {
 
-		String status = RrConstants.FAILURE;
+		boolean isSuccessYes = false;
 
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(organizationMaster);
-			status = RrConstants.SUCCESS;
+			isSuccessYes = true;
 		} catch (Exception e) {
 			logger.error("@@@ Exception in RrOrganizationConfDaoImpl at saveOrUpdateOrganization(): ", e);
 		}
 
-		return status;
+		return isSuccessYes;
 	}
 
 	@SuppressWarnings("unchecked")

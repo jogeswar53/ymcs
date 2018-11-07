@@ -46,7 +46,6 @@
 														<th>Organization Addr1</th>
 														<th>Organization Addr2</th>
 														<th>Organization Addr3</th>
-														<th>District</th>
 														<th>Pincode</th>
 														<th>Status</th>
 														<th>Action</th>
@@ -64,26 +63,18 @@
 															data-isdcode="${organization.organizationAddr1}"
 															data-isdcode="${organization.organizationAddr2}"
 															data-isdcode="${organization.organizationAddr3}"
-															data-isdcode="${organization.district}"
 															data-isdcode="${organization.pincode}" >
 															<td>${i.count}</td>
 															<td>${organization.countryName}</td>
 															<td>${organization.stateName}</td>
-															<td>${organization.organizationCode}</td>
+															<td><a href="${contextPath}/admin/updateOrganization?organizationId=${ organization.organizationId }&pid=0&mid=5">${organization.organizationCode}</a></td>
 															<td>${organization.organizationName}</td>
 															<td>${organization.organizationAddr1}</td>
 															<td>${organization.organizationAddr2}</td>
 															<td>${organization.organizationAddr3}</td>
-															<td>${organization.district}</td>
 															<td>${organization.pincode}</td>
 															<td class="${ organization.statusClass }">${organization.status}</td>
 															<td>
-																<span class="viewOrganization" data-target="#viewOrganizationModel">
-																	<i class="fa fa-eye"></i>
-																</span>
-																<span class="editOrganization">
-																	<a href="${contextPath}/admin/updateOrganization?organizationId=${ organization.organizationId }&pid=2&mid=6"><i class="fa fa-edit"></i></a>
-																</span>
 																<span class="deleteOrganization" data-target="#deleteOrganizationModel">
 																	<i class="fa fa-trash"></i>
 																</span>
@@ -157,12 +148,18 @@
 											</div>
 											<div class="col-md-3">
 												<div class="form-group">
-													<label>District</label><span class="mandatory_star">*</span>
-													<form:input type="text" id="district" path="district" class="form-control" />
+													<label>Telephone No</label><span class="mandatory_star">*</span>
+													<form:input type="text" id="telephoneNo" path="telephoneNo" class="form-control" />
 												</div>
 											</div>
 										</div>
 										<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Mobile No</label><span class="mandatory_star">*</span>
+													<form:input type="text" id="mobileNo" path="mobileNo" class="form-control" />
+												</div>
+											</div>
 											<div class="col-md-3">
 												<div class="form-group">
 													<label>Pincode</label><span class="mandatory_star">*</span>
@@ -187,7 +184,7 @@
 										</div>
 										<div class="row ">
 											<div class="col-md-8 text-center pull-right">
-												<a class="btn navbar-btn btn-default" href="${contextPath}/admin/createOrganization?pid=2&mid=6">Cancel</a> &nbsp;&nbsp;
+												<a class="btn navbar-btn btn-default" href="${contextPath}/admin/createOrganization?pid=0&mid=5">Cancel</a> &nbsp;&nbsp;
 												<a class="btn navbar-btn btn-primary" onclick="$(this).closest('form').submit();">Save</a>
 											</div>
 										</div>
@@ -203,7 +200,7 @@
 </div>
 
 <script>
-changeURL('admin/createOrganization?pid=2&mid=6');
+changeURL('admin/createOrganization?pid=0&mid=5');
 rradminportal.common();
 rradminportal.organization();
 </script>

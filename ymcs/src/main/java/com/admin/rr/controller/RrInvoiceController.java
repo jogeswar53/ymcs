@@ -19,7 +19,7 @@ import com.admin.rr.service.RrOrderService;
  *
  */
 @Controller
-public class RrOrderController {
+public class RrInvoiceController {
 
 	private Logger logger = LogManager.getLogger(this.getClass().getName());
 

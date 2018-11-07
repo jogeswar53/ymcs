@@ -1,7 +1,6 @@
 package com.admin.rr.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -12,7 +11,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.admin.rr.beans.RrOrganizationBean;
-import com.admin.rr.constants.RrConstants;
 import com.admin.rr.dao.RrOrganizationConfDao;
 import com.admin.rr.entity.RrCountryMaster;
 import com.admin.rr.entity.RrOrganizationMaster;
@@ -35,22 +33,36 @@ public class RrOrganizationConfServiceImpl implements RrOrganizationConfService 
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public String createOrganization(RrOrganizationBean organizationBean) {
+	public boolean createOrganization(RrOrganizationBean organizationBean) {
 
-		String status = RrConstants.FAILURE;
-
-		RrOrganizationMaster organizationMaster = null;
-		RrCountryMaster testCountryMaster = null;
-		RrStateMaster testStateMaster = null;
+		boolean isSuccessYes = false;
+		RrOrganizationMaster organizationMaster = new RrOrganizationMaster();
 
 		try {
-			organizationMaster = new RrOrganizationMaster();
-			testCountryMaster = new RrCountryMaster();
-			testCountryMaster.setRrCountryMasterId(organizationBean.getCountryCode());
-			organizationMaster.setRrCountryMaster(testCountryMaster);
-			testStateMaster = new RrStateMaster();
-			testStateMaster.setRrStateMasterId(organizationBean.getStateCode());
-			organizationMaster.setRrStateMaster(testStateMaster);
+			setEntity(organizationMaster, organizationBean);
+
+			organizationMaster.setCreatedBy(1L);
+
+			isSuccessYes = organizationConfDao.saveOrUpdateOrganization(organizationMaster);
+		} catch (Exception e) {
+			logger.error("@@@ Exception in RrOrganizationConfServiceImpl at createOrganization(): ", e);
+		}
+
+		return isSuccessYes;
+	}
+
+	private void setEntity(RrOrganizationMaster organizationMaster, RrOrganizationBean organizationBean) {
+
+		RrCountryMaster countryMaster = null;
+		RrStateMaster stateMaster = null;
+
+		try {
+			countryMaster = new RrCountryMaster();
+			countryMaster.setRrCountryMasterId(organizationBean.getCountryCode());
+			organizationMaster.setRrCountryMaster(countryMaster);
+			stateMaster = new RrStateMaster();
+			stateMaster.setRrStateMasterId(organizationBean.getStateCode());
+			organizationMaster.setRrStateMaster(stateMaster);
 
 			organizationMaster.setOrganizationCode(organizationBean.getOrganizationCode());
 			organizationMaster.setOrganizationName(organizationBean.getOrganizationName());
@@ -60,58 +72,35 @@ public class RrOrganizationConfServiceImpl implements RrOrganizationConfService 
 			organizationMaster.setDistrict(organizationBean.getDistrict());
 			organizationMaster.setPincode(organizationBean.getPincode());
 			organizationMaster.setStatus(organizationBean.getStatus());
-
-			organizationMaster.setCreatedTime(new Date());
-			organizationMaster.setCreatedBy(1L);
-
-			organizationConfDao.saveOrUpdateOrganization(organizationMaster);
+			organizationMaster.setTelephoneNo(organizationBean.getTelephoneNo());
+			organizationMaster.setMobileNo(organizationBean.getMobileNo());
 		} catch (Exception e) {
-			logger.error("@@@ Exception in RrOrganizationConfServiceImpl at createOrganization(): ", e);
+			logger.error("", e);
 		}
-
-		return status;
 	}
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public String updateOrganization(RrOrganizationBean organizationBean) {
+	public boolean updateOrganization(RrOrganizationBean organizationBean) {
 
-		String status = RrConstants.FAILURE;
-
+		boolean isSuccessYes = false;
 		RrOrganizationMaster organizationMaster = null;
-		RrCountryMaster testCountryMaster = null;
-		RrStateMaster testStateMaster = null;
 
 		try {
 			organizationMaster = organizationConfDao.getOrganizationById(organizationBean.getOrganizationId());
 
 			if (null != organizationMaster) {
-				testCountryMaster = new RrCountryMaster();
-				testCountryMaster.setRrCountryMasterId(organizationBean.getCountryCode());
-				organizationMaster.setRrCountryMaster(testCountryMaster);
-				testStateMaster = new RrStateMaster();
-				testStateMaster.setRrStateMasterId(organizationBean.getStateCode());
-				organizationMaster.setRrStateMaster(testStateMaster);
+				setEntity(organizationMaster, organizationBean);
 
-				organizationMaster.setOrganizationCode(organizationBean.getOrganizationCode());
-				organizationMaster.setOrganizationName(organizationBean.getOrganizationName());
-				organizationMaster.setOrganizationAddr1(organizationBean.getOrganizationAddr1());
-				organizationMaster.setOrganizationAddr2(organizationBean.getOrganizationAddr2());
-				organizationMaster.setOrganizationAddr3(organizationBean.getOrganizationAddr3());
-				organizationMaster.setDistrict(organizationBean.getDistrict());
-				organizationMaster.setPincode(organizationBean.getPincode());
-				organizationMaster.setStatus(organizationBean.getStatus());
-
-				organizationMaster.setModifiedTime(new Date());
 				organizationMaster.setModifiedBy(1L);
 
-				status = organizationConfDao.saveOrUpdateOrganization(organizationMaster);
+				isSuccessYes = organizationConfDao.saveOrUpdateOrganization(organizationMaster);
 			}
 		} catch (Exception e) {
 			logger.error("@@@ Exception in RrOrganizationConfServiceImpl at createOrganization(): ", e);
 		}
 
-		return status;
+		return isSuccessYes;
 	}
 
 	@Override
@@ -138,6 +127,8 @@ public class RrOrganizationConfServiceImpl implements RrOrganizationConfService 
 					organizationBean.setOrganizationAddr3(organization.getOrganizationAddr3());
 					organizationBean.setDistrict(organization.getDistrict());
 					organizationBean.setPincode(organization.getPincode());
+					organizationBean.setTelephoneNo(organization.getTelephoneNo());
+					organizationBean.setMobileNo(organization.getMobileNo());
 
 					organizationBean.setStatus(organization.getStatus());
 					organizationBean.setStatusClass(RrCommonUtils.setStatusClass(organization.getStatus()));
@@ -172,6 +163,8 @@ public class RrOrganizationConfServiceImpl implements RrOrganizationConfService 
 				organizationBean.setOrganizationAddr3(organizationMaster.getOrganizationAddr3());
 				organizationBean.setDistrict(organizationMaster.getDistrict());
 				organizationBean.setPincode(organizationMaster.getPincode());
+				organizationBean.setTelephoneNo(organizationMaster.getTelephoneNo());
+				organizationBean.setMobileNo(organizationMaster.getMobileNo());
 				organizationBean.setStatus(organizationMaster.getStatus());
 			}
 		} catch (Exception e) {

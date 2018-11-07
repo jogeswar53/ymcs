@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.admin.rr.beans.RrMenuAttributeJSONBean;
 import com.admin.rr.beans.RrMenuBean;
 import com.admin.rr.beans.RrMenuJSONBean;
+import com.admin.rr.beans.RrMenuStateJSONBean;
 import com.admin.rr.constants.RrConstants;
 import com.admin.rr.constants.RrHBQueries;
 import com.admin.rr.dao.RrMenuConfDao;
@@ -42,6 +43,7 @@ public class RrMenuConfServiceImpl implements RrMenuConfService {
 		List<RrMenus> menuList = null;
 		List<Integer> childMenuNos = new ArrayList<>();
 
+		boolean isFirstTimeYes = true;
 		RrMenus menu;
 		RrMenuJSONBean menuJsonBean;
 		RrMenuAttributeJSONBean attributeJsonBean;
@@ -76,12 +78,12 @@ public class RrMenuConfServiceImpl implements RrMenuConfService {
 
 						menuJsonBean.setA_attr(attributeJsonBean);
 
-//						if (isFirstTimeYes) {
-//							isFirstTimeYes = false;
-//							RrMenuStateJSONBean stateJsonBean = new RrMenuStateJSONBean();
-//							stateJsonBean.setSelected(true);
-//							menuJsonBean.setState(stateJsonBean);
-//						}
+						if (isFirstTimeYes) {
+							isFirstTimeYes = false;
+							RrMenuStateJSONBean stateJsonBean = new RrMenuStateJSONBean();
+							stateJsonBean.setSelected(true);
+							menuJsonBean.setState(stateJsonBean);
+						}
 
 						new RrCommonUtils().hasChild(menuJsonBean, menuList, (i + 1), menu.getMenuLevel(),
 								(3 * 3 + 2), 3, childMenuNos, activeStatusMap);

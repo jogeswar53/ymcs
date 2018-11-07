@@ -1,5 +1,6 @@
 package com.admin.rr.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,12 +9,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.admin.rr.beans.OrderBean;
 import com.admin.rr.constants.RrConstants;
 import com.admin.rr.dao.RrOrderDao;
 import com.admin.rr.dao.RrUserProfileConfDao;
 import com.admin.rr.entity.RrBrandMaster;
+import com.admin.rr.entity.RrIssueMaster;
 import com.admin.rr.entity.RrOrder;
 import com.admin.rr.entity.RrUserProfile;
 import com.admin.rr.service.RrOrderService;
@@ -24,6 +28,7 @@ import com.admin.rr.utils.RrCommonUtils;
  *
  */
 @Service
+@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
 public class RrOrderServiceImpl implements RrOrderService {
 
 	private Logger logger = LogManager.getLogger(this.getClass().getName());
@@ -84,9 +89,29 @@ public class RrOrderServiceImpl implements RrOrderService {
 	/*
 	 * (non-Javadoc)
 	 * 
+	 * @see com.admin.rr.service.RrOrderService#getIssueMap()
+	 */
+	@Override
+	public Map<Long, String> getIssueMap() {
+
+		Map<Long, String> issueMap = new HashMap<>();
+
+		try {
+			issueMap.put(1L, "Lense is not working");
+		} catch (Exception e) {
+			logger.error("", e);
+		}
+
+		return issueMap;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.admin.rr.service.RrOrderService#saveOrder(com.admin.rr.beans.
 	 * OrderBean)
 	 */
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	@Override
 	public boolean saveOrder(OrderBean orderBean) {
 
@@ -106,6 +131,7 @@ public class RrOrderServiceImpl implements RrOrderService {
 
 		RrBrandMaster brandMaster;
 		RrUserProfile userProfile;
+		RrIssueMaster issueMaster;
 
 		boolean isSuccessYes = false;
 
@@ -118,6 +144,10 @@ public class RrOrderServiceImpl implements RrOrderService {
 			userProfile.setRrUserProfileId(orderBean.getUserProfileId());
 			order.setRrUserProfile(userProfile);
 
+			issueMaster = new RrIssueMaster();
+			issueMaster.setRrIssueMasterId(orderBean.getIssueId());
+			order.setRrIssueMaster(issueMaster);
+
 			order.setOrderNo(String.valueOf(System.currentTimeMillis()));
 			order.setFirstName(orderBean.getFirstName());
 			order.setLastName(orderBean.getLastName());
@@ -125,10 +155,9 @@ public class RrOrderServiceImpl implements RrOrderService {
 			order.setEmailId(orderBean.getEmailId());
 			order.setAddress(orderBean.getAddress());
 			order.setModel(orderBean.getModel());
-			order.setDueTime(RrCommonUtils.getDateFromString(orderBean.getDueTime(), null));
+			order.setDueTime(RrCommonUtils.getDateFromString(orderBean.getDueTime(), RrConstants.DATE_FORMAT.intern()));
 			order.setAccessories(orderBean.getAccessories());
 			order.setPaidAmount(orderBean.getPaidAmount());
-			order.setIssue(orderBean.getIssue());
 			order.setIssueDescription(orderBean.getIssueDescription());
 			order.setStatus(RrConstants.ONLINE);
 			order.setCreatedBy(orderBean.getCreatedBy());
@@ -150,6 +179,7 @@ public class RrOrderServiceImpl implements RrOrderService {
 	 * 
 	 * @see com.admin.rr.service.RrOrderService#updateOrder(java.lang.Long)
 	 */
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	@Override
 	public boolean updateOrder(OrderBean orderBean) {
 
@@ -160,7 +190,7 @@ public class RrOrderServiceImpl implements RrOrderService {
 			order = orderDao.getOrderById(orderBean.getOrderId());
 
 			if (null != order) {
-				setOrder(order, orderBean);
+				isSuccessYes = setOrder(order, orderBean);
 			}
 		} catch (Exception e) {
 			logger.error("", e);
@@ -184,14 +214,14 @@ public class RrOrderServiceImpl implements RrOrderService {
 			order = orderDao.getOrderById(orderId);
 
 			if (null != order) {
+				orderBean.setOrderId(order.getRrOrderId());
 				orderBean.setAccessories(order.getAccessories());
 				orderBean.setAddress(order.getAddress());
 				orderBean.setCreatedBy(order.getCreatedBy());
-				// orderBean.setCreatedTime(order.getCreatedTime());
-				// orderBean.setDueTime(order.getDueTime());
 				orderBean.setEmailId(order.getEmailId());
 				orderBean.setFirstName(order.getFirstName());
-				orderBean.setIssue(order.getIssue());
+				orderBean.setIssueId(order.getRrIssueMaster().getRrIssueMasterId());
+				orderBean.setIssueName(order.getRrIssueMaster().getIssueName());
 				orderBean.setIssueDescription(order.getIssueDescription());
 				orderBean.setLastName(order.getLastName());
 				orderBean.setMobileNo(order.getMobileNo());
@@ -199,13 +229,75 @@ public class RrOrderServiceImpl implements RrOrderService {
 				orderBean.setOrderNo(order.getOrderNo());
 				orderBean.setPaidAmount(order.getPaidAmount());
 				orderBean.setBrandId(order.getRrBrandMaster().getRrBrandMasterId());
+				orderBean.setBrandName(order.getRrBrandMaster().getBrandName());
 				orderBean.setUserProfileId(order.getRrUserProfile().getRrUserProfileId());
+				orderBean.setUserName(order.getRrUserProfile().getUserName());
+				orderBean.setDueTime(
+						RrCommonUtils.getFormattedDate(order.getDueTime(), RrConstants.DATE_FORMAT.intern()));
+				orderBean.setCreatedTime(
+						RrCommonUtils.getFormattedDate(order.getCreatedTime(), RrConstants.DATE_FORMAT.intern()));
 			}
 		} catch (Exception e) {
 			logger.error("", e);
 		}
 
 		return orderBean;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.admin.rr.service.RrOrderService#getAllOrders()
+	 */
+	@Override
+	public List<OrderBean> getAllOrders() {
+
+		List<OrderBean> orderBeans = new ArrayList<>();
+		List<RrOrder> orders = null;
+
+		OrderBean orderBean = null;
+
+		try {
+			orders = orderDao.getAllOrders();
+
+			if (null != orders) {
+
+				for (RrOrder order : orders) {
+					orderBean = new OrderBean();
+
+					orderBean.setOrderId(order.getRrOrderId());
+					orderBean.setUserProfileId(order.getRrUserProfile().getRrUserProfileId());
+					orderBean.setUserName(order.getRrUserProfile().getUserName());
+					orderBean.setOrderNo(order.getOrderNo());
+					orderBean.setFirstName(order.getFirstName());
+					orderBean.setMiddleName(order.getMiddleName());
+					orderBean.setLastName(order.getLastName());
+					orderBean.setMobileNo(order.getMobileNo());
+					orderBean.setEmailId(order.getEmailId());
+					orderBean.setAddress(order.getAddress());
+					orderBean.setBrandId(order.getRrBrandMaster().getRrBrandMasterId());
+					orderBean.setBrandName(order.getRrBrandMaster().getBrandName());
+					orderBean.setModel(order.getModel());
+					orderBean.setDueTime(
+							RrCommonUtils.getFormattedDate(order.getDueTime(), RrConstants.DATE_FORMAT.intern()));
+					orderBean.setAccessories(order.getAccessories());
+					orderBean.setPaidAmount(order.getPaidAmount());
+					orderBean.setIssueId(order.getRrIssueMaster().getRrIssueMasterId());
+					orderBean.setIssueName(order.getRrIssueMaster().getIssueName());
+					orderBean.setIssueDescription(order.getIssueDescription());
+					orderBean.setCreatedTime(
+							RrCommonUtils.getFormattedDate(order.getCreatedTime(), RrConstants.DATE_FORMAT.intern()));
+					orderBean.setCreatedBy(order.getCreatedBy());
+					orderBean.setStatus(order.getStatus());
+
+					orderBeans.add(orderBean);
+				}
+			}
+		} catch (Exception e) {
+			logger.error("", e);
+		}
+
+		return orderBeans;
 	}
 
 }

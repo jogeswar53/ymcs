@@ -15,7 +15,7 @@
 		<link rel="shortcut icon" href="${contextPath}/static/img/favicon.png" type="image/x-icon">
 		<link rel="icon" href="${contextPath}/static/img/favicon.png" type="image/x-icon">
 
-		<title>TestApp</title>
+		<title>YoliMart Customer Support</title>
 
 		<!-- Custom CSS -->
 		<!-- Select2 -->

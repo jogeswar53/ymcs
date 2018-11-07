@@ -9,3 +9,4 @@ document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/
 document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/additional-methods.min.js'></script>");
 document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/select2.full.js'></script>");
 document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/bootstrap-datepicker.js'></script>");
+document.writeln("<script type='text/javascript' src='"+ctx+"/static/js/plugins/printThis.js'></script>");

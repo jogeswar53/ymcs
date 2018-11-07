@@ -10,9 +10,9 @@ import com.admin.rr.beans.RrOrganizationBean;
  */
 public interface RrOrganizationConfService {
 
-	public String createOrganization(RrOrganizationBean organizationBean);
+	public boolean createOrganization(RrOrganizationBean organizationBean);
 
-	public String updateOrganization(RrOrganizationBean organizationBean);
+	public boolean updateOrganization(RrOrganizationBean organizationBean);
 
 	public List<RrOrganizationBean> getAllOrganizations();
 

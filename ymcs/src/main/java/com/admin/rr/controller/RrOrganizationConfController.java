@@ -34,11 +34,13 @@ public class RrOrganizationConfController {
 	@Autowired
 	RrOrganizationConfService organizationService;
 
+	private static final String ORG_FORM = "addOrganizationForm";
+
 	@RequestMapping(value = "/createOrganization", method = RequestMethod.GET)
 	public String createOrganization(HttpServletRequest request, ModelMap model) {
 
 		try {
-			model.addAttribute("addOrganizationForm", new RrOrganizationBean());
+			model.addAttribute(ORG_FORM, new RrOrganizationBean());
 			model.addAttribute("organizationList", organizationService.getAllOrganizations());
 			model.addAttribute("countryMap", commonService.getCountryMap());
 			model.addAttribute("stateMap", commonService.getStateMap());
@@ -51,14 +53,17 @@ public class RrOrganizationConfController {
 	}
 
 	@RequestMapping(value = "/createOrganization", method = RequestMethod.POST)
-	public String createOrganization(@ModelAttribute("addOrganizationForm") RrOrganizationBean organizationBean,
-			RedirectAttributes redirectAttrs) {
+	public String createOrganization(@ModelAttribute(ORG_FORM) RrOrganizationBean organizationBean,
+			RedirectAttributes redirectAttrs, ModelMap model) {
 
 		try {
-			if (RrConstants.SUCCESS.equals(organizationService.createOrganization(organizationBean))) {
+			if (organizationService.createOrganization(organizationBean)) {
 				redirectAttrs.addFlashAttribute(RrConstants.SUCCESS_MESSAGE, "Organization created successfully.");
 			} else {
+				model.addAttribute(ORG_FORM, organizationBean);
 				redirectAttrs.addFlashAttribute(RrConstants.ERROR_MESSAGE, RrConstants.ERROR_MESSAGE_VALUE);
+
+				return "createOrganization";
 			}
 		} catch (Exception e) {
 			logger.error("@@@ Exception in RrOrganizationConfController at createOrganization(): ", e);
@@ -74,7 +79,7 @@ public class RrOrganizationConfController {
 
 		try {
 			organizationBean = organizationService.getOrganizationById(organizationId);
-			model.addAttribute("addOrganizationForm", organizationBean);
+			model.addAttribute(ORG_FORM, organizationBean);
 			model.addAttribute("countryMap", commonService.getCountryMap());
 			model.addAttribute("stateMap", commonService.getStateMap());
 			model.addAttribute("activeStatus", RrCommonUtils.getStatus());
@@ -86,14 +91,17 @@ public class RrOrganizationConfController {
 	}
 
 	@RequestMapping(value = "/updateOrganization", method = RequestMethod.POST)
-	public String updateOrganization(@ModelAttribute("addOrganizationForm") RrOrganizationBean organizationBean,
-			RedirectAttributes redirectAttrs) {
+	public String updateOrganization(@ModelAttribute(ORG_FORM) RrOrganizationBean organizationBean,
+			RedirectAttributes redirectAttrs, ModelMap model) {
 
 		try {
-			if (RrConstants.SUCCESS.equals(organizationService.updateOrganization(organizationBean))) {
+			if (organizationService.updateOrganization(organizationBean)) {
 				redirectAttrs.addFlashAttribute(RrConstants.SUCCESS_MESSAGE, "Organization updated successfully.");
 			} else {
+				model.addAttribute(ORG_FORM, organizationBean);
 				redirectAttrs.addFlashAttribute(RrConstants.ERROR_MESSAGE, RrConstants.ERROR_MESSAGE_VALUE);
+
+				return "updateOrganization";
 			}
 		} catch (Exception e) {
 			logger.error("@@@ Exception in RrOrganizationConfController at updateOrganization(): ", e);

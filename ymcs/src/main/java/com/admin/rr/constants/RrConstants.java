@@ -47,6 +47,7 @@ public class RrConstants {
 	public static final String SINGLE_QUOTE = "\'".intern();
 
 	public static final String DEFAULT_DATE_FORMAT = "dd/MM/yyyy".intern();
+	public static final String DATE_FORMAT = "MM/dd/yyyy".intern();
 	public static final String EDIT_MEMBER_DATE_FORMAT = "E MMM dd yyyy 'at' hh:mm:ss".intern();
 	public static final String CAMPAIGN_MGMT_DATE_FORMAT = "dd-MMM-yyyy".intern();
 

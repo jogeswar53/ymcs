@@ -11,13 +11,13 @@
 	</session-config>
 
 	<servlet>
-		<servlet-name>rradminportal</servlet-name>
+		<servlet-name>ymcs</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>rradminportal</servlet-name>
+		<servlet-name>ymcs</servlet-name>
 		<url-pattern>/admin/*</url-pattern>
 	</servlet-mapping>
 

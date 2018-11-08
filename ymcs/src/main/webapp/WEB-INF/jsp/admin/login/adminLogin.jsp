@@ -195,8 +195,8 @@ body:before {
 			<div>
 				<form:password path="password" class="form-control " placeholder="Password"/>
 			</div>
-			<div  class="login-buttons">
-				<a class="btn btn-primary btn-block btn-flat " onClick="$(this).closest('form').submit();">Login</a>
+			<div  class="login-buttons" onClick="$(this).closest('form').submit();">
+				<a class="btn btn-primary btn-block btn-flat " >Login</a>
 			</div>
 			<p class="message"><a href="#">Forgot Password?</a></p>
 		</form:form>

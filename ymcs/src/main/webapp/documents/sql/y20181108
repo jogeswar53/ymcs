@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.24, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.13, for linux-glibc2.5 (x86_64)
 --
 -- Host: localhost    Database: ymcs
 -- ------------------------------------------------------
--- Server version	5.7.24-0ubuntu0.16.04.1
+-- Server version	5.7.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -338,14 +338,14 @@ CREATE TABLE `RR_USER_PROFILE` (
   `GENDER` enum('Male','Female','Other') NOT NULL DEFAULT 'Other',
   `FIRST_NAME` varchar(30) NOT NULL,
   `MIDDLE_NAME` varchar(30) DEFAULT NULL,
-  `LAST_NAME` varchar(30) NOT NULL,
+  `LAST_NAME` varchar(30) DEFAULT NULL,
   `EMAIL` varchar(255) NOT NULL,
   `MOBILE` varchar(15) NOT NULL,
   `DOB` datetime DEFAULT NULL,
   `PROFILE_PHOTO_IMG` varchar(250) DEFAULT NULL,
-  `VOTER_ID_NO` varchar(20) NOT NULL,
+  `VOTER_ID_NO` varchar(20) DEFAULT NULL,
   `VOTER_ID_IMG` varchar(250) DEFAULT NULL,
-  `ADHAR_CARD_NO` varchar(20) NOT NULL,
+  `ADHAR_CARD_NO` varchar(20) DEFAULT NULL,
   `ADHAR_CARD_IMG` varchar(80) DEFAULT NULL,
   `DATE_OF_JOINING` datetime DEFAULT NULL,
   `PERMANENT_ADDR1` varchar(80) DEFAULT NULL,
@@ -379,7 +379,7 @@ CREATE TABLE `RR_USER_PROFILE` (
 
 LOCK TABLES `RR_USER_PROFILE` WRITE;
 /*!40000 ALTER TABLE `RR_USER_PROFILE` DISABLE KEYS */;
-INSERT INTO `RR_USER_PROFILE` VALUES (1,1,1,1,1,'admin','f925916e2754e5e03f75dd58a5733251','Mr','Male','Jogeswar',NULL,'Sahu','jogeswar53@gmail.com','7338552253',NULL,'user/admin1.jpeg','V153',NULL,'A123',NULL,'2018-11-04 14:02:55',NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-08 03:38:50','2018-11-04 14:02:55',1,NULL,NULL,'Online'),(2,3,1,1,1,'prajeeth','prajeeth@123','Mr','Male','Prajeeth','','Kumar','prajeeth@gmail.com','72338555253','2018-08-11 00:00:00','user/Prajeeth_1541453904713.jpeg','sdfsdf',NULL,'asdfsadf',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-06 03:08:24',1,'2018-11-06 03:08:24',NULL,'Online'),(4,3,1,1,1,'bipin','Test@123','Mr','Male','Bipin','','D','bipindigits@gmail.com','7676788120','2019-02-11 00:00:00',NULL,'sadfsdfa',NULL,'sdfsdf',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-08 03:10:03',1,'2018-11-08 03:10:03',NULL,'Online');
+INSERT INTO `RR_USER_PROFILE` VALUES (1,1,1,1,1,'admin','f925916e2754e5e03f75dd58a5733251','Mr','Male','Jogeswar',NULL,'Sahu','jogeswar53@gmail.com','7338552253',NULL,'user/admin1.jpeg','V153',NULL,'A123',NULL,'2018-11-04 14:02:55',NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-08 12:53:05','2018-11-04 14:02:55',1,NULL,NULL,'Online'),(2,3,1,1,1,'prajeeth','prajeeth@123','Mr','Male','Prajeeth','','Kumar','prajeeth@gmail.com','72338555253','2018-08-11 00:00:00','user/Prajeeth_1541453904713.jpeg','sdfsdf',NULL,'asdfsadf',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-06 03:08:24',1,'2018-11-06 03:08:24',NULL,'Online'),(4,3,1,1,1,'bipin','Test@123','Mr','Male','Bipin','','D','bipindigits@gmail.com','7676788120','2019-02-11 00:00:00',NULL,'sadfsdfa',NULL,'sdfsdf',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-08 03:10:03',1,'2018-11-08 03:10:03',NULL,'Online');
 /*!40000 ALTER TABLE `RR_USER_PROFILE` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -423,4 +423,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-08  3:41:04
+-- Dump completed on 2018-11-08 13:10:34

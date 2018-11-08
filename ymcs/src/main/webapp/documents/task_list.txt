@@ -7,10 +7,13 @@ Task List :
 
 CR Request :
 ------------
-1. Voter card no and adhar card number should not a mandatory field.
+1. Voter card no and adhar card number should not a mandatory field. - done
 
 Bugs :
 ------
 1. User name unique validation client side - not done.
 2. Mobile no number field validation - not done.
 3. Amount number field validation - not done.
+4. Profile Image not available error show some default image - not done.
+5. Country update status is not working.
+6. 

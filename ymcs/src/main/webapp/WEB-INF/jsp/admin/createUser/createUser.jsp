@@ -165,7 +165,7 @@
 												</div>
 												<div class="col-md-4">
 													<div class="form-group">
-														<label>Last Name</label><span class="mandatory_star">*</span>
+														<label>Last Name</label>
 														<form:input type="text" maxlength="30" id="lastName" path="lastName" class="form-control" />
 													</div>
 												</div>
@@ -247,13 +247,13 @@
 												</div>
 												<div class="col-md-4">
 													<div class="form-group">
-														<label>Voter Id No</label><span class="mandatory_star">*</span>
+														<label>Voter Id No</label>
 														<form:input type="text" maxlength="20" id="voterIdNo" path="voterIdNo" class="form-control" />
 													</div>
 												</div>
 												<div class="col-md-4">
 													<div class="form-group">
-														<label>Adhar Card No</label><span class="mandatory_star">*</span>
+														<label>Adhar Card No</label>
 														<form:input type="text" maxlength="20" id="adharCardNo" path="adharCardNo" class="form-control" />
 													</div>
 												</div>
@@ -262,7 +262,7 @@
 												<div class="col-md-4">
 													<div class="form-group">
 														<div class="file-box">
-															<label>Profile Photo</label>
+															<label>Profile Photo</label><span class="mandatory_star">*</span>
 															<input type="file" id="profilePhotoImg" class="inputfile inputfile-6" />
 															<label for="profilePhotoImg">
 																<span></span>

@@ -1342,10 +1342,7 @@ var rradminportal = (function() {
 						firstName : {
 							required : true,
 						},
-						lastName : {
-							required : true,
-						},
-						userId : {
+						userName : {
 							required : true,
 						},
 						upassword : {
@@ -1363,18 +1360,6 @@ var rradminportal = (function() {
 						dateOfBirth : {
 							required : true,
 						},
-						voterIdNo : {
-							required : true,
-						},
-						adharCardNo : {
-							required : true,
-						},
-						guardianName : {
-							required : true,
-						},
-						motherName : {
-							required : true,
-						}
 					},
 					messages : {
 						userRoleId : {
@@ -1395,11 +1380,8 @@ var rradminportal = (function() {
 						firstName : {
 							required : "Please Enter First Name",
 						},
-						lastName : {
-							required : "Please Enter Last Name",
-						},
-						userId : {
-							required : "Please Enter User ID",
+						userName : {
+							required : "Please Enter User Name",
 						},
 						upassword : {
 							required : "Please Enter Password",
@@ -1416,18 +1398,6 @@ var rradminportal = (function() {
 						dateOfBirth : {
 							required : "Please select date of birth",
 						},
-						voterIdNo : {
-							required : "Please Enter Voter id no",
-						},
-						adharCardNo : {
-							required : "Please Enter Adhar card no",
-						},
-						guardianName : {
-							required : "Please Enter Guardian Name",
-						},
-						motherName : {
-							required : "Please Enter Mother Name",
-						}
 					},
 					errorElement : "div",
 					errorPlacement : function(error, element) {

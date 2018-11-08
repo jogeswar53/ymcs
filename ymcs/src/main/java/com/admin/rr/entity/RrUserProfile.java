@@ -171,7 +171,7 @@ public class RrUserProfile extends BaseEntity implements java.io.Serializable {
 		this.middleName = middleName;
 	}
 
-	@Column(name = "LAST_NAME", nullable = false, length = 30)
+	@Column(name = "LAST_NAME", length = 30)
 	public String getLastName() {
 		return this.lastName;
 	}
@@ -217,7 +217,7 @@ public class RrUserProfile extends BaseEntity implements java.io.Serializable {
 		this.profilePhotoImg = profilePhotoImg;
 	}
 
-	@Column(name = "VOTER_ID_NO", nullable = false, length = 20)
+	@Column(name = "VOTER_ID_NO", length = 20)
 	public String getVoterIdNo() {
 		return this.voterIdNo;
 	}
@@ -235,7 +235,7 @@ public class RrUserProfile extends BaseEntity implements java.io.Serializable {
 		this.voterIdImg = voterIdImg;
 	}
 
-	@Column(name = "ADHAR_CARD_NO", nullable = false, length = 20)
+	@Column(name = "ADHAR_CARD_NO", length = 20)
 	public String getAdharCardNo() {
 		return this.adharCardNo;
 	}
